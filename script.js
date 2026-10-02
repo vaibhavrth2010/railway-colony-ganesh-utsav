@@ -1,7 +1,25 @@
 /* =========================================================
    RAILWAY COLONY GANESH UTSAV SAMITI
-   WEBSITE JAVASCRIPT
+   WEBSITE JAVASCRIPT + SUPABASE GALLERY
 ========================================================= */
+
+
+/* =========================================================
+   SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+    "https://ewfglrnllbdngzhixkqm.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_MD3tKZLy1240PioluSbH4g_4w5YMTnM";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -163,44 +181,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
         {
             title: "Pandal Making",
-            icon: "🔨"
+            icon: "🔨",
+            folder: "pandal-making"
         },
 
         {
             title: "Ganesh Ji Aagman",
-            icon: "🐘"
+            icon: "🐘",
+            folder: "ganesh-ji-aagman"
         },
 
         {
             title: "First Puja & Aarti",
-            icon: "🪔"
+            icon: "🪔",
+            folder: "first-puja-aarti"
         },
 
         {
             title: "Ganesh Utsav Events",
-            icon: "🎉"
+            icon: "🎉",
+            folder: "ganesh-utsav-events"
         },
 
         {
             title: "Hawan Puja",
-            icon: "🔥"
+            icon: "🔥",
+            folder: "hawan-puja"
         },
 
         {
             title: "Visarjan Dance",
-            icon: "🥁"
+            icon: "🥁",
+            folder: "visarjan-dance"
         },
 
         {
             title: "Final Goodbye & Visarjan",
-            icon: "🙏"
+            icon: "🙏",
+            folder: "final-goodbye-visarjan"
         }
 
     ];
 
 
     /* =====================================================
-       HELPER FUNCTIONS
+       HELPERS
     ===================================================== */
 
     function get(id) {
@@ -268,7 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       BASIC WEBSITE DATA
+       BASIC DATA
     ===================================================== */
 
     setText(
@@ -298,7 +323,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderMembers() {
 
-        const container = get("membersGrid");
+        const container =
+            get("membersGrid");
 
         if (!container) {
             return;
@@ -306,9 +332,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         container.innerHTML = "";
 
-        MEMBERS.forEach((member, index) => {
+        MEMBERS.forEach(member => {
 
-            const card = document.createElement("article");
+            const card =
+                document.createElement("article");
 
             card.className =
                 "member-card reveal";
@@ -332,13 +359,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         rel="noopener noreferrer"
                         class="member-instagram"
                     >
-
                         ${instagramIcon()}
 
                         <span>
                             ${account.username}
                         </span>
-
                     </a>
                 `;
 
@@ -371,12 +396,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       PHOTO GALLERY
+       SUPABASE PHOTO GALLERY
     ===================================================== */
 
-    function renderGallery() {
+    async function loadPhotos() {
 
-        const gallery = get("photoGallery");
+        const gallery =
+            get("photoGallery");
 
         if (!gallery) {
             return;
@@ -384,67 +410,139 @@ document.addEventListener("DOMContentLoaded", () => {
 
         gallery.innerHTML = `
 
-            <div class="gallery-coming-soon reveal">
-
-                <div class="coming-icon">
-                    📸
-                </div>
-
-                <strong>
-                    Photos Coming Soon
-                </strong>
-
-                <span>
-                    Real Ganesh Utsav photos will be added here.
-                </span>
-
-            </div>
-
-            <div class="gallery-coming-soon reveal">
-
-                <div class="coming-icon">
-                    🪔
-                </div>
-
-                <strong>
-                    Celebration Memories
-                </strong>
-
-                <span>
-                    Gallery will be updated with real photos.
-                </span>
-
-            </div>
-
-            <div class="gallery-coming-soon reveal">
-
-                <div class="coming-icon">
-                    🙏
-                </div>
-
-                <strong>
-                    Ganpati Bappa Morya
-                </strong>
-
-                <span>
-                    More memories coming soon.
-                </span>
-
+            <div class="gallery-loading">
+                <div class="gallery-spinner"></div>
+                <span>Loading memories...</span>
             </div>
 
         `;
 
+        try {
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+                .storage
+                .from("photos")
+                .list("", {
+                    limit: 100,
+                    sortBy: {
+                        column: "created_at",
+                        order: "desc"
+                    }
+                });
+
+            if (error) {
+                throw error;
+            }
+
+            const files =
+                (data || []).filter(
+                    file =>
+                        file.name &&
+                        !file.name.startsWith(".")
+                );
+
+            if (!files.length) {
+
+                gallery.innerHTML = `
+
+                    <div class="gallery-coming-soon reveal">
+
+                        <div class="coming-icon">
+                            📸
+                        </div>
+
+                        <strong>
+                            Photos Coming Soon
+                        </strong>
+
+                        <span>
+                            Real Ganesh Utsav photos will appear here.
+                        </span>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+            gallery.innerHTML = "";
+
+            files.forEach(file => {
+
+                const {
+                    data: publicData
+                } = supabaseClient
+                    .storage
+                    .from("photos")
+                    .getPublicUrl(file.name);
+
+                const image =
+                    document.createElement("div");
+
+                image.className =
+                    "gallery-item reveal";
+
+                image.innerHTML = `
+
+                    <img
+                        src="${publicData.publicUrl}"
+                        alt="Railway Colony Ganesh Utsav"
+                        loading="lazy"
+                        data-lightbox="${publicData.publicUrl}"
+                    >
+
+                `;
+
+                gallery.appendChild(image);
+
+            });
+
+            setupReveal();
+
+        } catch (error) {
+
+            console.error(
+                "Photo loading error:",
+                error
+            );
+
+            gallery.innerHTML = `
+
+                <div class="gallery-coming-soon reveal">
+
+                    <div class="coming-icon">
+                        📸
+                    </div>
+
+                    <strong>
+                        Gallery will be updated soon
+                    </strong>
+
+                    <span>
+                        Please check again later.
+                    </span>
+
+                </div>
+
+            `;
+
+        }
+
     }
 
 
-    renderGallery();
+    loadPhotos();
 
 
     /* =====================================================
-       VIDEO CATEGORIES
+       SUPABASE VIDEO GALLERY
     ===================================================== */
 
-    function renderVideos() {
+    async function loadVideos() {
 
         const container =
             get("videoCategories");
@@ -455,7 +553,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         container.innerHTML = "";
 
-        VIDEO_CATEGORIES.forEach(category => {
+        for (const category of VIDEO_CATEGORIES) {
 
             const section =
                 document.createElement("div");
@@ -477,17 +575,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 </div>
 
-                <div class="video-grid">
+                <div
+                    class="video-grid"
+                    data-video-folder="${category.folder}"
+                >
 
                     <div class="video-card">
                         <span>
-                            Videos coming soon
-                        </span>
-                    </div>
-
-                    <div class="video-card">
-                        <span>
-                            More memories soon
+                            Loading videos...
                         </span>
                     </div>
 
@@ -497,16 +592,144 @@ document.addEventListener("DOMContentLoaded", () => {
 
             container.appendChild(section);
 
-        });
+            await loadCategoryVideos(
+                category,
+                section.querySelector(".video-grid")
+            );
+
+        }
+
+        setupReveal();
 
     }
 
 
-    renderVideos();
+    async function loadCategoryVideos(
+        category,
+        videoGrid
+    ) {
+
+        try {
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+                .storage
+                .from("videos")
+                .list(category.folder, {
+                    limit: 100,
+                    sortBy: {
+                        column: "created_at",
+                        order: "desc"
+                    }
+                });
+
+            if (error) {
+                throw error;
+            }
+
+            const files =
+                (data || []).filter(
+                    file =>
+                        file.name &&
+                        !file.name.startsWith(".")
+                );
+
+            if (!files.length) {
+
+                videoGrid.innerHTML = `
+
+                    <div class="video-card video-empty">
+
+                        <span>
+                            ▶
+                        </span>
+
+                        <strong>
+                            Videos coming soon
+                        </strong>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+            videoGrid.innerHTML = "";
+
+            files.forEach(file => {
+
+                const filePath =
+                    `${category.folder}/${file.name}`;
+
+                const {
+                    data: publicData
+                } = supabaseClient
+                    .storage
+                    .from("videos")
+                    .getPublicUrl(filePath);
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "video-card video-card-real";
+
+                card.innerHTML = `
+
+                    <video
+                        controls
+                        preload="metadata"
+                        playsinline
+                    >
+                        <source
+                            src="${publicData.publicUrl}"
+                        >
+                        Your browser does not support video.
+                    </video>
+
+                `;
+
+                videoGrid.appendChild(card);
+
+            });
+
+        } catch (error) {
+
+            console.error(
+                "Video loading error:",
+                error
+            );
+
+            videoGrid.innerHTML = `
+
+                <div class="video-card video-empty">
+
+                    <span>
+                        ⚠️
+                    </span>
+
+                    <strong>
+                        Videos coming soon
+                    </strong>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+
+    loadVideos();
 
 
     /* =====================================================
-       CONTACT CARDS
+       CONTACT
     ===================================================== */
 
     function renderContacts() {
@@ -520,7 +743,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         container.innerHTML = "";
 
-        /* CALL CARDS */
 
         CONFIG.contactNumbers.forEach(number => {
 
@@ -561,50 +783,48 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-        /* WHATSAPP CARDS */
+        CONFIG.whatsappNumbers.forEach(
+            (number, index) => {
 
-        CONFIG.whatsappNumbers.forEach((number, index) => {
+                const displayNumber =
+                    CONFIG.contactNumbers[index];
 
-            const displayNumber =
-                CONFIG.contactNumbers[index];
+                const card =
+                    document.createElement("div");
 
-            const card =
-                document.createElement("div");
+                card.className =
+                    "contact-card reveal";
 
-            card.className =
-                "contact-card reveal";
+                card.innerHTML = `
 
-            card.innerHTML = `
+                    <div class="contact-icon">
+                        💬
+                    </div>
 
-                <div class="contact-icon">
-                    💬
-                </div>
+                    <h3>
+                        WhatsApp
+                    </h3>
 
-                <h3>
-                    WhatsApp
-                </h3>
+                    <p>
+                        ${displayNumber}
+                    </p>
 
-                <p>
-                    ${displayNumber}
-                </p>
+                    <a
+                        href="https://wa.me/${number}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-link"
+                    >
+                        WhatsApp
+                    </a>
 
-                <a
-                    href="https://wa.me/${number}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="contact-link"
-                >
-                    WhatsApp
-                </a>
+                `;
 
-            `;
+                container.appendChild(card);
 
-            container.appendChild(card);
+            }
+        );
 
-        });
-
-
-        /* INSTAGRAM CARD */
 
         const instagramCard =
             document.createElement("div");
@@ -627,7 +847,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </p>
 
             <a
-                id="contactInstagramLink"
                 href="${CONFIG.instagramUrl}"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -638,7 +857,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         `;
 
-        container.appendChild(instagramCard);
+        container.appendChild(
+            instagramCard
+        );
 
     }
 
@@ -691,7 +912,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       SHARE WEBSITE
+       SHARE
     ===================================================== */
 
     const shareButton =
@@ -716,12 +937,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 };
 
-
                 try {
 
-                    if (
-                        navigator.share
-                    ) {
+                    if (navigator.share) {
 
                         await navigator.share(
                             shareData
@@ -809,7 +1027,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const elements =
             document.querySelectorAll(
-                ".reveal"
+                ".reveal:not(.revealed)"
             );
 
         if (
@@ -926,7 +1144,6 @@ document.addEventListener("DOMContentLoaded", () => {
             petal
         );
 
-
         setTimeout(() => {
 
             petal.remove();
@@ -981,9 +1198,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         if (lightboxImage) {
-
             lightboxImage.src = "";
-
         }
 
     }
@@ -1035,10 +1250,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =====================================================
-       IMAGE LIGHTBOX SUPPORT
-    ===================================================== */
-
     document.addEventListener(
         "click",
         event => {
@@ -1073,7 +1284,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       NAVBAR SCROLL EFFECT
+       NAVBAR
     ===================================================== */
 
     const navbar =
@@ -1160,12 +1371,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             });
 
-
                             const activeLink =
                                 document.querySelector(
                                     `#navMenu a[href="#${entry.target.id}"]`
                                 );
-
 
                             if (activeLink) {
 
@@ -1197,10 +1406,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
-    /* =====================================================
-       CONSOLE MESSAGE
-    ===================================================== */
 
     console.log(
         "🙏 Railway Colony Ganesh Utsav Samiti website loaded."

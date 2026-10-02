@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin | Railway Colony Ganesh Utsav Samiti</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .admin-page {
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px 18px;
+        }
+
+
+        .admin-container {
+            width: 100%;
+            max-width: 720px;
+        }
+
+
+        .admin-header {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .admin-symbol {
+            width: 75px;
+            height: 75px;
+
+            margin: 0 auto 18px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            color: #240900;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd166,
+                    #ff7900
+                );
+
+            font-family: serif;
+
+            font-size: 38px;
+
+            box-shadow:
+                0 0 35px rgba(255, 140, 0, 0.3);
+        }
+
+
+        .admin-header h1 {
+            color: var(--gold);
+
+            font-family: "Cinzel", serif;
+
+            font-size:
+                clamp(25px, 5vw, 38px);
+        }
+
+
+        .admin-header p {
+            margin-top: 8px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        .admin-card {
+            padding: 30px;
+
+            border:
+                1px solid rgba(255, 170, 50, 0.2);
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 150, 0, 0.08),
+                    rgba(255, 255, 255, 0.035)
+                );
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.45);
+
+            margin-bottom: 20px;
+        }
+
+
+        .admin-card h2 {
+            color: var(--gold);
+
+            font-family: "Cinzel", serif;
+
+            font-size: 20px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .admin-label {
+            display: block;
+
+            color: #d9c8b5;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            margin:
+                15px 0 7px;
+        }
+
+
+        .admin-input,
+        .admin-select {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border:
+                1px solid rgba(255, 175, 50, 0.2);
+
+            border-radius: 12px;
+
+            outline: none;
+
+            color: white;
+
+            background:
+                rgba(0, 0, 0, 0.28);
+
+            font-family: inherit;
+
+            font-size: 13px;
+        }
+
+
+        .admin-input:focus,
+        .admin-select:focus {
+            border-color:
+                rgba(255, 180, 50, 0.65);
+
+            box-shadow:
+                0 0 20px rgba(255, 130, 0, 0.08);
+        }
+
+
+        .admin-select option {
+            background: #160a08;
+
+            color: white;
+        }
+
+
+        .admin-file {
+            width: 100%;
+
+            padding: 15px;
+
+            border:
+                1px dashed rgba(255, 175, 50, 0.3);
+
+            border-radius: 14px;
+
+            color: var(--muted);
+
+            background:
+                rgba(255, 255, 255, 0.025);
+
+            cursor: pointer;
+        }
+
+
+        .admin-button-row {
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin-top: 20px;
+        }
+
+
+        .admin-button {
+            border: none;
+
+            padding:
+                12px 20px;
+
+            border-radius: 999px;
+
+            cursor: pointer;
+
+            color: #1a0800;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--gold),
+                    var(--orange)
+                );
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .admin-button:hover {
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 12px 30px rgba(255, 120, 0, 0.25);
+        }
+
+
+        .admin-button.secondary {
+            color: white;
+
+            background:
+                rgba(255, 255, 255, 0.07);
+
+            border:
+                1px solid rgba(255, 175, 50, 0.18);
+        }
+
+
+        .admin-status {
+            min-height: 20px;
+
+            margin-top: 14px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+
+        .admin-status.success {
+            color: #8ff0a4;
+        }
+
+
+        .admin-status.error {
+            color: #ff9b86;
+        }
+
+
+        .upload-progress {
+            display: none;
+
+            margin-top: 15px;
+        }
+
+
+        .upload-progress.active {
+            display: block;
+        }
+
+
+        .progress-bar {
+            height: 7px;
+
+            overflow: hidden;
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,0.08);
+        }
+
+
+        .progress-fill {
+            width: 0;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--orange),
+                    var(--gold)
+                );
+
+            transition:
+                width 0.3s ease;
+        }
+
+
+        .admin-user {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+
+            padding: 13px 16px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            color: var(--muted);
+
+            font-size: 11px;
+        }
+
+
+        .admin-user strong {
+            color: var(--gold);
+        }
+
+
+        .media-list {
+            display: grid;
+
+            gap: 12px;
+        }
+
+
+        .media-item {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 12px;
+
+            border-radius: 15px;
+
+            border:
+                1px solid rgba(255, 175, 50, 0.12);
+
+            background:
+                rgba(255,255,255,0.025);
+        }
+
+
+        .media-item-info {
+            min-width: 0;
+        }
+
+
+        .media-item-name {
+            overflow: hidden;
+
+            color: white;
+
+            font-size: 11px;
+
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+        }
+
+
+        .media-item-type {
+            color: var(--muted);
+
+            font-size: 9px;
+
+            margin-top: 3px;
+        }
+
+
+        .delete-button {
+            flex-shrink: 0;
+
+            border: 1px solid rgba(255, 90, 70, 0.25);
+
+            border-radius: 999px;
+
+            padding: 7px 12px;
+
+            color: #ff9a88;
+
+            background:
+                rgba(255, 70, 50, 0.07);
+
+            cursor: pointer;
+
+            font-size: 10px;
+        }
+
+
+        .delete-button:hover {
+            background:
+                rgba(255, 70, 50, 0.15);
+        }
+
+
+        .hidden {
+            display: none !important;
+        }
+
+
+        .admin-back {
+            display: inline-flex;
+
+            margin-top: 5px;
+
+            color: #d6c5b2;
+
+            font-size: 11px;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .admin-card {
+                padding: 22px 18px;
+            }
+
+            .admin-user {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="ambient ambient-three"></div>
+
+
+    <main class="admin-page">
+
+        <div class="admin-container">
+
+
+            <div class="admin-header">
+
+                <div class="admin-symbol">
+                    ॐ
+                </div>
+
+                <h1>
+                    Samiti Admin
+                </h1>
+
+                <p>
+                    Railway Colony Ganesh Utsav Samiti
+                </p>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <section
+                id="loginCard"
+                class="admin-card"
+            >
+
+                <h2>
+                    🔐 Admin Login
+                </h2>
+
+                <label class="admin-label">
+                    Email
+                </label>
+
+                <input
+                    id="email"
+                    class="admin-input"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="Admin email"
+                >
+
+
+                <label class="admin-label">
+                    Password
+                </label>
+
+                <input
+                    id="password"
+                    class="admin-input"
+                    type="password"
+                    autocomplete="current-password"
+                    placeholder="Admin password"
+                >
+
+
+                <div class="admin-button-row">
+
+                    <button
+                        id="loginButton"
+                        class="admin-button"
+                    >
+                        Login
+                    </button>
+
+                    <a
+                        href="/"
+                        class="admin-button secondary"
+                    >
+                        Website
+                    </a>
+
+                </div>
+
+
+                <div
+                    id="loginStatus"
+                    class="admin-status"
+                ></div>
+
+            </section>
+
+
+            <!-- DASHBOARD -->
+
+            <section
+                id="dashboard"
+                class="hidden"
+            >
+
+
+                <div class="admin-user">
+
+                    <div>
+                        Logged in as:
+                        <strong id="adminEmail"></strong>
+                    </div>
+
+                    <button
+                        id="logoutButton"
+                        class="admin-button secondary"
+                    >
+                        Logout
+                    </button>
+
+                </div>
+
+
+                <!-- PHOTO UPLOAD -->
+
+                <div class="admin-card">
+
+                    <h2>
+                        📸 Upload Photos
+                    </h2>
+
+                    <input
+                        id="photoFiles"
+                        class="admin-file"
+                        type="file"
+                        accept="image/*"
+                        multiple
+                    >
+
+                    <div class="admin-button-row">
+
+                        <button
+                            id="uploadPhotosButton"
+                            class="admin-button"
+                        >
+                            Upload Photos
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="photoStatus"
+                        class="admin-status"
+                    ></div>
+
+
+                    <div
+                        id="photoProgress"
+                        class="upload-progress"
+                    >
+
+                        <div class="progress-bar">
+
+                            <div
+                                id="photoProgressFill"
+                                class="progress-fill"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- VIDEO UPLOAD -->
+
+                <div class="admin-card">
+
+                    <h2>
+                        🎥 Upload Video
+                    </h2>
+
+
+                    <label class="admin-label">
+                        Video Category
+                    </label>
+
+                    <select
+                        id="videoCategory"
+                        class="admin-select"
+                    >
+
+                        <option value="pandal-making">
+                            Pandal Making
+                        </option>
+
+                        <option value="ganesh-ji-aagman">
+                            Ganesh Ji Aagman
+                        </option>
+
+                        <option value="first-puja-aarti">
+                            First Puja & Aarti
+                        </option>
+
+                        <option value="ganesh-utsav-events">
+                            Ganesh Utsav Events
+                        </option>
+
+                        <option value="hawan-puja">
+                            Hawan Puja
+                        </option>
+
+                        <option value="visarjan-dance">
+                            Visarjan Dance
+                        </option>
+
+                        <option value="final-goodbye-visarjan">
+                            Final Goodbye & Visarjan
+                        </option>
+
+                    </select>
+
+
+                    <label class="admin-label">
+                        Video File
+                    </label>
+
+                    <input
+                        id="videoFile"
+                        class="admin-file"
+                        type="file"
+                        accept="video/*"
+                    >
+
+
+                    <div class="admin-button-row">
+
+                        <button
+                            id="uploadVideoButton"
+                            class="admin-button"
+                        >
+                            Upload Video
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="videoStatus"
+                        class="admin-status"
+                    ></div>
+
+
+                    <div
+                        id="videoProgress"
+                        class="upload-progress"
+                    >
+
+                        <div class="progress-bar">
+
+                            <div
+                                id="videoProgressFill"
+                                class="progress-fill"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MEDIA MANAGEMENT -->
+
+                <div class="admin-card">
+
+                    <h2>
+                        🗂️ Media Management
+                    </h2>
+
+                    <p
+                        style="
+                            color:var(--muted);
+                            font-size:11px;
+                            margin-bottom:18px;
+                        "
+                    >
+                        Uploaded files are stored in Supabase.
+                        You can delete files here.
+                    </p>
+
+
+                    <div
+                        id="mediaList"
+                        class="media-list"
+                    ></div>
+
+                </div>
+
+
+            </section>
+
+
+            <div style="text-align:center;">
+
+                <a
+                    href="/"
+                    class="admin-back"
+                >
+                    ← Back to public website
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <div id="toast" class="toast"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
