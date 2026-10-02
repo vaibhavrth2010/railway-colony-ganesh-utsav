@@ -6,7 +6,7 @@
 
     <meta
         name="description"
-        content="Railway Colony Ganesh Utsav Samiti, Champa, Chhattisgarh — Ganesh Utsav celebrations, memories, videos and community."
+        content="Railway Colony Ganesh Utsav Samiti, Champa, Chhattisgarh — our cute little corner for Ganpati celebrations, memories and videos."
     >
 
     <title>Railway Colony Ganesh Utsav Samiti | Champa</title>
@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
         rel="stylesheet"
     >
 
@@ -24,10 +24,7 @@
 
 <body>
 
-    <!-- =========================================
-         SVG DEFINITIONS
-    ========================================== -->
-    <svg width="0" height="0" style="position:absolute">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
         <defs>
             <linearGradient id="instagramGradient" x1="0%" y1="100%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="#fdf497"/>
@@ -38,59 +35,36 @@
         </defs>
     </svg>
 
+    <!-- floating flowers (capped by JS for perf) -->
+    <div class="petal-container" id="petalContainer" aria-hidden="true"></div>
 
-    <!-- =========================================
-         BACKGROUND
-    ========================================== -->
-    <div class="ambient-bg">
-        <div class="ambient-glow glow-one"></div>
-        <div class="ambient-glow glow-two"></div>
-        <div class="ambient-glow glow-three"></div>
+    <!-- cute toran -->
+    <div class="toran" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
-        <div class="light-beam beam-one"></div>
-        <div class="light-beam beam-two"></div>
-
-        <div class="petal-container" id="petalContainer"></div>
-    </div>
-
-
-    <!-- =========================================
-         NAVBAR
-    ========================================== -->
     <header class="navbar" id="navbar">
-
         <div class="nav-inner">
-
             <a href="#home" class="brand">
                 <div class="brand-symbol">ॐ</div>
-
                 <div class="brand-text">
                     <span>RAILWAY COLONY</span>
-                    <strong>GANESH UTSAV</strong>
+                    <strong>Ganesh Utsav</strong>
                 </div>
             </a>
 
-
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                aria-label="Open navigation menu"
-            >
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-
             <nav class="nav-menu" id="navMenu">
-
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#members">Members</a>
+                <a href="#memories">Memories</a>
                 <a href="#videos">Videos</a>
                 <a href="#location">Location</a>
                 <a href="#contact">Contact</a>
-
                 <a
                     href="https://www.instagram.com/railwaycolony_ganeshutsav_cph/"
                     target="_blank"
@@ -98,307 +72,104 @@
                     class="nav-instagram"
                     aria-label="Official Instagram"
                 >
-
-                    <!-- INLINE INSTAGRAM SVG -->
-                    <svg
-                        class="instagram-svg"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <rect
-                            x="2"
-                            y="2"
-                            width="20"
-                            height="20"
-                            rx="5"
-                            fill="url(#instagramGradient)"
-                        />
-
-                        <rect
-                            x="6.5"
-                            y="6.5"
-                            width="11"
-                            height="11"
-                            rx="3"
-                            fill="none"
-                            stroke="white"
-                            stroke-width="1.7"
-                        />
-
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="2.7"
-                            fill="none"
-                            stroke="white"
-                            stroke-width="1.7"
-                        />
-
-                        <circle
-                            cx="16.7"
-                            cy="7.5"
-                            r="1"
-                            fill="white"
-                        />
+                    <svg class="instagram-svg" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#instagramGradient)"/>
+                        <rect x="6.5" y="6.5" width="11" height="11" rx="3" fill="none" stroke="white" stroke-width="1.7"/>
+                        <circle cx="12" cy="12" r="2.7" fill="none" stroke="white" stroke-width="1.7"/>
+                        <circle cx="16.7" cy="7.5" r="1" fill="white"/>
                     </svg>
-
                     Instagram
                 </a>
-
             </nav>
-
         </div>
-
     </header>
 
-
-
-    <!-- =========================================
-         HERO
-    ========================================== -->
     <main>
-
         <section class="hero section" id="home">
-
-            <div class="hero-rings">
-                <div class="hero-ring ring-one"></div>
-                <div class="hero-ring ring-two"></div>
-                <div class="hero-ring ring-three"></div>
-            </div>
-
-
             <div class="hero-content reveal">
-
                 <div class="hero-om">ॐ</div>
-
-                <p class="hero-topline">
-                    <span></span>
-                    GANPATI BAPPA MORIYA
-                    <span></span>
-                </p>
-
+                <p class="hero-topline"><span></span>GANPATI BAPPA MORYA<span></span></p>
                 <h1>
                     Railway Colony
                     <strong>Ganesh Utsav Samiti</strong>
                 </h1>
-
-                <p class="hero-location">
-                    📍 Railway Colony, Champa, Chhattisgarh
-                </p>
-
+                <p class="hero-location">🌼 Railway Colony, Champa, Chhattisgarh</p>
                 <p class="hero-description">
-                    Celebrating devotion, unity, culture and unforgettable
-                    moments together with the blessings of Lord Ganesha.
+                    Our little festival scrapbook — dhol, aarti, marigold,
+                    late-night pandal talks and all our favourite people. 🌸
                 </p>
-
-
                 <div class="hero-actions">
-
-                    <a href="#videos" class="btn btn-primary">
-                        Explore Celebrations
-                        <span>↓</span>
-                    </a>
-
+                    <a href="#videos" class="btn btn-primary">Watch celebrations ↓</a>
                     <a
                         href="https://www.instagram.com/railwaycolony_ganeshutsav_cph/"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="btn btn-instagram"
                     >
-
-                        <!-- INLINE INSTAGRAM SVG -->
-                        <svg
-                            class="instagram-svg"
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                        >
-                            <rect
-                                x="2"
-                                y="2"
-                                width="20"
-                                height="20"
-                                rx="5"
-                                fill="url(#instagramGradient)"
-                            />
-
-                            <rect
-                                x="6.5"
-                                y="6.5"
-                                width="11"
-                                height="11"
-                                rx="3"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="1.7"
-                            />
-
-                            <circle
-                                cx="12"
-                                cy="12"
-                                r="2.7"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="1.7"
-                            />
-
-                            <circle
-                                cx="16.7"
-                                cy="7.5"
-                                r="1"
-                                fill="white"
-                            />
+                        <svg class="instagram-svg" viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#instagramGradient)"/>
+                            <rect x="6.5" y="6.5" width="11" height="11" rx="3" fill="none" stroke="white" stroke-width="1.7"/>
+                            <circle cx="12" cy="12" r="2.7" fill="none" stroke="white" stroke-width="1.7"/>
+                            <circle cx="16.7" cy="7.5" r="1" fill="white"/>
                         </svg>
-
-                        Official Instagram
+                        Our Instagram
                     </a>
-
                 </div>
-
             </div>
-
-
-            <div class="scroll-indicator">
-                <span>SCROLL TO EXPLORE</span>
-                <div class="scroll-line"></div>
-            </div>
-
         </section>
 
+        <div class="marquee" aria-hidden="true">
+            <span>🌼 ganpati bappa morya 🌼 dhol • aarti • marigold • modak • dosti • masti 🌼 ganpati bappa morya 🌼 dhol • aarti • marigold • modak • dosti • masti&nbsp;</span>
+        </div>
 
-
-        <!-- =========================================
-             ABOUT
-        ========================================== -->
         <section class="section section-dark" id="about">
-
             <div class="container">
-
                 <div class="section-heading reveal">
-
-                    <span class="eyebrow">ABOUT THE SAMITI</span>
-
-                    <h2>
-                        One Celebration.
-                        <span>Many Memories.</span>
-                    </h2>
-
+                    <span class="eyebrow">🌼 about our samiti</span>
+                    <h2>One celebration. <span>Lots of pyaar.</span></h2>
                     <p>
-                        Railway Colony Ganesh Utsav Samiti brings the community
-                        together through devotion, celebrations, cultural
-                        events and shared memories.
+                        We are the colony kids + families who decorated,
+                        danced and did aarti together for Bappa this year.
                     </p>
-
                 </div>
 
-
                 <div class="feature-grid">
-
                     <article class="feature-card reveal">
                         <div class="feature-number">01</div>
-                        <div class="feature-icon">🙏</div>
-
-                        <h3>Devotion</h3>
-
-                        <p>
-                            Coming together with faith and devotion to seek
-                            the blessings of Lord Ganesha.
-                        </p>
+                        <div class="feature-icon">🪔</div>
+                        <h3>Bhakti</h3>
+                        <p>Morning aartis, evening bhajans and that peaceful diya glow together.</p>
                     </article>
-
 
                     <article class="feature-card reveal">
                         <div class="feature-number">02</div>
-                        <div class="feature-icon">🎉</div>
-
-                        <h3>Celebration</h3>
-
-                        <p>
-                            Pujas, aartis, events, havan and joyful celebrations
-                            throughout Ganesh Utsav.
-                        </p>
+                        <div class="feature-icon">🎊</div>
+                        <h3>Masti</h3>
+                        <p>Dhol, dance, games, havan and full-on utsav energy all week.</p>
                     </article>
-
 
                     <article class="feature-card reveal">
                         <div class="feature-number">03</div>
-                        <div class="feature-icon">🤝</div>
-
-                        <h3>Community</h3>
-
-                        <p>
-                            A celebration built around friendship, teamwork,
-                            unity and community spirit.
-                        </p>
+                        <div class="feature-icon">🧡</div>
+                        <h3>Parivaar</h3>
+                        <p>Everyone helps — pandal, prasad, photos. That's what makes it ours.</p>
                     </article>
-
                 </div>
 
-
-                <!-- INSTAGRAM FEATURE -->
                 <div class="instagram-feature reveal">
-
                     <div class="instagram-feature-icon">
-
-                        <!-- INLINE INSTAGRAM SVG -->
-                        <svg
-                            class="instagram-svg large"
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                        >
-                            <rect
-                                x="2"
-                                y="2"
-                                width="20"
-                                height="20"
-                                rx="5"
-                                fill="url(#instagramGradient)"
-                            />
-
-                            <rect
-                                x="6.5"
-                                y="6.5"
-                                width="11"
-                                height="11"
-                                rx="3"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="1.7"
-                            />
-
-                            <circle
-                                cx="12"
-                                cy="12"
-                                r="2.7"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="1.7"
-                            />
-
-                            <circle
-                                cx="16.7"
-                                cy="7.5"
-                                r="1"
-                                fill="white"
-                            />
+                        <svg class="instagram-svg large" viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#instagramGradient)"/>
+                            <rect x="6.5" y="6.5" width="11" height="11" rx="3" fill="none" stroke="white" stroke-width="1.7"/>
+                            <circle cx="12" cy="12" r="2.7" fill="none" stroke="white" stroke-width="1.7"/>
+                            <circle cx="16.7" cy="7.5" r="1" fill="white"/>
                         </svg>
-
                     </div>
-
-
                     <div class="instagram-feature-content">
-
                         <span>FOLLOW OUR JOURNEY</span>
-
                         <h3>@railwaycolony_ganeshutsav_cph</h3>
-
-                        <p>
-                            Follow our official Instagram for updates,
-                            celebrations and memories.
-                        </p>
-
+                        <p>Behind-the-scenes, reels and all the cute moments. 🌸</p>
                     </div>
-
-
                     <a
                         href="https://www.instagram.com/railwaycolony_ganeshutsav_cph/"
                         target="_blank"
@@ -407,141 +178,64 @@
                     >
                         Visit Instagram →
                     </a>
-
-                </div>
-
-
-                <!-- ONLINE CHANDA -->
-                <div class="chanda-card reveal">
-
-                    <div class="chanda-icon">🙏</div>
-
-                    <div>
-                        <span>ONLINE CHANDA</span>
-
-                        <h3>Coming Soon</h3>
-
-                        <p>
-                            Online contribution facility will be available
-                            in the future.
-                        </p>
-                    </div>
-
-                    <div class="coming-badge">
-                        Coming Soon
-                    </div>
-
                 </div>
 
             </div>
-
         </section>
 
-
-
-        <!-- =========================================
-             MEMBERS
-        ========================================== -->
         <section class="section" id="members">
-
             <div class="container">
-
                 <div class="section-heading reveal">
-
-                    <span class="eyebrow">OUR COMMUNITY</span>
-
-                    <h2>
-                        Samiti <span>Members</span>
-                    </h2>
-
-                    <p>
-                        The people who come together to make the celebration
-                        special.
-                    </p>
-
+                    <span class="eyebrow">🧡 our people</span>
+                    <h2>Samiti <span>members</span></h2>
+                    <p>The sweetest team behind all the decorations and dhamaka.</p>
                 </div>
-
-
                 <div class="members-grid" id="membersGrid"></div>
-
             </div>
-
         </section>
 
-
-
-        <!-- =========================================
-             VIDEO GALLERY
-        ========================================== -->
-        <section class="section section-dark" id="videos">
-
+        <section class="section section-dark" id="memories">
             <div class="container">
-
                 <div class="section-heading reveal">
+                    <span class="eyebrow">📸 festival memories</span>
+                    <h2>Photo <span>wall</span></h2>
+                    <p>Pandal nights, marigold mornings and Bappa in all his glow. Tap any photo to view. 🌼</p>
+                </div>
+                <div class="mem-grid" id="memGrid" aria-live="polite"></div>
+            </div>
+        </section>
 
-                    <span class="eyebrow">MEMORIES IN MOTION</span>
-
-                    <h2>
-                        Video <span>Gallery</span>
-                    </h2>
-
-                    <p>
-                        Relive the celebrations, events and unforgettable
-                        moments of our Ganesh Utsav.
-                    </p>
-
+        <section class="section" id="videos">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="eyebrow">🎬 memories in motion</span>
+                    <h2>Video <span>gallery</span></h2>
+                    <p>Tap any video to play it — aagman, aarti, dance, visarjan and more.</p>
                 </div>
 
-
-                <!-- VIDEO NOTE -->
                 <div class="video-note reveal">
-
                     <div class="video-note-icon">▶</div>
-
                     <div>
-                        <strong>Video not loading?</strong>
-
+                        <strong>Videos play on tap 🌼</strong>
                         <p>
-                            Some videos are hosted through Google Drive.
-                            If a video doesn't load, refresh your browser
-                            and wait a few seconds. If it still doesn't load,
-                            try opening the video directly in Google Drive.
+                            To keep the site super fast, videos load only when you tap them.
+                            If one feels slow, wait a few seconds — it's coming from Google Drive.
                         </p>
                     </div>
-
                 </div>
-
 
                 <div id="videoGallery"></div>
-
             </div>
-
         </section>
 
-
-
-        <!-- =========================================
-             LOCATION
-        ========================================== -->
         <section class="section" id="location">
-
             <div class="container">
-
                 <div class="location-card reveal">
-
                     <div class="location-content">
-
-                        <span class="eyebrow">FIND US</span>
-
-                        <h2>
-                            Railway Colony,
-                            <span>Champa</span>
-                        </h2>
-
-                        <p>
-                            Railway Colony, Champa, Chhattisgarh
-                        </p>
-
+                        <span class="eyebrow">📍 find us</span>
+                        <h2>Railway Colony, <span>Champa</span></h2>
+                        <p>Railway Colony, Champa, Chhattisgarh</p>
+                        <br>
                         <a
                             href="https://maps.app.goo.gl/iWrGcVQCoZLjcJ8e6"
                             target="_blank"
@@ -550,214 +244,104 @@
                         >
                             Open in Google Maps →
                         </a>
-
                     </div>
-
-
                     <div class="location-visual">
-
                         <div class="map-orbit orbit-one"></div>
                         <div class="map-orbit orbit-two"></div>
-
-                        <div class="location-pin">
-                            📍
-                        </div>
-
+                        <div class="location-pin">📍</div>
                     </div>
-
                 </div>
-
             </div>
-
         </section>
 
-
-
-        <!-- =========================================
-             SHARE
-        ========================================== -->
         <section class="section share-section">
-
             <div class="container">
-
                 <div class="share-card reveal">
-
                     <div>
-                        <span class="eyebrow">SHARE THE CELEBRATION</span>
-
-                        <h2>
-                            Spread the
-                            <span>Festive Spirit</span>
-                        </h2>
-
-                        <p>
-                            Share our official website with friends,
-                            family and the community.
-                        </p>
+                        <span class="eyebrow">💌 share the love</span>
+                        <h2>Spread the <span>festive giggles</span></h2>
+                        <p>Send this page to friends, family and neighbours. 🌸</p>
                     </div>
-
-
-                    <button
-                        class="btn btn-primary"
-                        id="shareButton"
-                    >
-                        Share Website ↗
-                    </button>
-
+                    <button class="btn btn-primary" id="shareButton">Share website ↗</button>
                 </div>
-
             </div>
-
         </section>
 
-
-
-        <!-- =========================================
-             CONTACT
-        ========================================== -->
         <section class="section section-dark" id="contact">
-
             <div class="container">
-
                 <div class="section-heading reveal">
-
-                    <span class="eyebrow">GET IN TOUCH</span>
-
-                    <h2>
-                        Contact <span>Us</span>
-                    </h2>
-
-                    <p>
-                        Reach out to the Samiti for general information
-                        and coordination.
-                    </p>
-
+                    <span class="eyebrow">📞 say hello</span>
+                    <h2>Contact <span>us</span></h2>
+                    <p>Want to help, join or just say hi? We'd love to hear from you.</p>
                 </div>
-
-
                 <div class="contact-grid" id="contactGrid"></div>
-
             </div>
-
         </section>
 
+        <!-- GAME — lives at the very end -->
+        <section class="section" id="play">
+            <div class="container">
+                <div class="game-teaser reveal">
+                    <div class="game-teaser-emoji">🍬</div>
+                    <div>
+                        <span class="eyebrow">🎮 utsav mini game</span>
+                        <h2>Modak <span>Madness</span></h2>
+                        <p>Catch modaks, dodge mushaks. 45 seconds of pure masti! 🌼</p>
+                    </div>
+                    <a href="game.html" class="btn">Play now! 🎮</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-
-
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
     <footer class="footer">
-
         <div class="container">
-
             <div class="footer-main">
-
                 <div class="footer-brand">
-
                     <div class="footer-om">ॐ</div>
-
                     <div>
                         <strong>Railway Colony</strong>
                         <span>Ganesh Utsav Samiti</span>
                     </div>
-
                 </div>
-
-
                 <a
                     href="https://www.instagram.com/railwaycolony_ganeshutsav_cph/"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="footer-instagram"
                 >
-
-                    <!-- INLINE INSTAGRAM SVG -->
-                    <svg
-                        class="instagram-svg"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <rect
-                            x="2"
-                            y="2"
-                            width="20"
-                            height="20"
-                            rx="5"
-                            fill="url(#instagramGradient)"
-                        />
-
-                        <rect
-                            x="6.5"
-                            y="6.5"
-                            width="11"
-                            height="11"
-                            rx="3"
-                            fill="none"
-                            stroke="white"
-                            stroke-width="1.7"
-                        />
-
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="2.7"
-                            fill="none"
-                            stroke="white"
-                            stroke-width="1.7"
-                        />
-
-                        <circle
-                            cx="16.7"
-                            cy="7.5"
-                            r="1"
-                            fill="white"
-                        />
+                    <svg class="instagram-svg" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#instagramGradient)"/>
+                        <rect x="6.5" y="6.5" width="11" height="11" rx="3" fill="none" stroke="white" stroke-width="1.7"/>
+                        <circle cx="12" cy="12" r="2.7" fill="none" stroke="white" stroke-width="1.7"/>
+                        <circle cx="16.7" cy="7.5" r="1" fill="white"/>
                     </svg>
-
                     @railwaycolony_ganeshutsav_cph
-
                 </a>
-
             </div>
-
-
             <div class="footer-bottom">
-
-                <span>
-                    © 2026 Railway Colony Ganesh Utsav Samiti
-                </span>
-
-                <span>
-                    Ganpati Bappa Morya 🙏
-                </span>
-
+                <span>© 2026 Railway Colony Ganesh Utsav Samiti</span>
+                <span>Ganpati Bappa Morya 🌼</span>
             </div>
-
+            <div class="footer-credit">
+                Made with 🧡 by
+                <a href="https://github.com/vaibhavrth2010" target="_blank" rel="noopener noreferrer">Vaibhav</a>
+                &
+                <a href="https://github.com/sar0406" target="_blank" rel="noopener noreferrer">Sarthak</a>
+                ✨
+            </div>
         </div>
-
     </footer>
 
-
-
-    <!-- =========================================
-         TOAST
-    ========================================== -->
-    <div
-        class="toast"
-        id="toast"
-        role="status"
-        aria-live="polite"
-    >
-        <span id="toastMessage">
-            Done
-        </span>
+    <div class="lightbox hidden" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close photo">✕</button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Festival memory">
     </div>
 
-
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <span id="toastMessage">Done</span>
+    </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>

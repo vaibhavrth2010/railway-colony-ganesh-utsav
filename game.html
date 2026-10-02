@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Modak Madness — the cute Ganesh Utsav catching game. Catch modaks, dodge mushaks!">
+    <title>Modak Madness | Ganesh Utsav Game</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="toran" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+    <header class="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-symbol">ॐ</div>
+                <div class="brand-text">
+                    <span>RAILWAY COLONY</span>
+                    <strong>Ganesh Utsav</strong>
+                </div>
+            </a>
+            <a href="index.html" class="outline-btn">← Back home</a>
+        </div>
+    </header>
+
+    <main class="game-page">
+        <div class="container game-container">
+
+            <div class="game-heading">
+                <span class="eyebrow">🎮 utsav mini game</span>
+                <h1>Modak <span>Madness</span></h1>
+                <p>Catch the falling modaks in your tokri. Dodge the mushaks! 🐭</p>
+            </div>
+
+            <div class="game-card">
+                <div class="game-hud">
+                    <div class="hud-pill">⭐ <strong id="score">0</strong></div>
+                    <div class="hud-pill">⏱ <strong id="time">45</strong>s</div>
+                    <div class="hud-pill">🧡 <strong id="lives">3</strong></div>
+                    <div class="hud-pill best">🏆 <strong id="best">0</strong></div>
+                </div>
+
+                <div class="game-wrap" id="gameWrap">
+                    <canvas id="gameCanvas" aria-label="Modak Madness game area"></canvas>
+
+                    <div class="game-overlay" id="startOverlay">
+                        <div class="game-emoji">🍬</div>
+                        <h2>Ready?</h2>
+                        <p>Drag / move mouse / ← → keys<br>to move the tokri.</p>
+                        <p class="game-rules">modak +10 &nbsp;•&nbsp; golden +30 &nbsp;•&nbsp; mushak = -1 🧡</p>
+                        <button class="btn btn-primary game-big-btn" id="startBtn">Start catching! 🌼</button>
+                    </div>
+
+                    <div class="game-overlay hidden" id="endOverlay">
+                        <div class="game-emoji" id="endEmoji">🎉</div>
+                        <h2 id="endTitle">Time's up!</h2>
+                        <p class="game-final">You scored <strong id="finalScore">0</strong></p>
+                        <p class="game-best-line">Best: <strong id="finalBest">0</strong> <span id="newBest" class="new-best hidden">• new! 🏆</span></p>
+                        <div class="game-end-btns">
+                            <button class="btn btn-primary game-big-btn" id="againBtn">Play again 🔁</button>
+                            <button class="btn btn-instagram" id="shareScoreBtn">Share score ↗</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <button class="outline-btn" id="muteBtn" aria-label="Toggle sound">🔊 sound on</button>
+                    <button class="outline-btn" id="pauseBtn" aria-label="Pause game">⏸ pause</button>
+                    <a class="outline-btn" href="index.html">🏠 home</a>
+                </div>
+
+                <p class="game-tip">Tip: golden modaks are rare — grab them! Works best with one thumb on mobile. 🌸</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>© 2026 Railway Colony Ganesh Utsav Samiti</span>
+                <span>Ganpati Bappa Morya 🌼</span>
+            </div>
+            <div class="footer-credit">
+                Made with 🧡 by
+                <a href="https://github.com/vaibhavrth2010" target="_blank" rel="noopener noreferrer">Vaibhav</a>
+                &
+                <a href="https://github.com/sar0406" target="_blank" rel="noopener noreferrer">Sarthak</a>
+                ✨
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="gameToast" role="status" aria-live="polite"><span id="gameToastMsg">Done</span></div>
+
+    <script src="game.js"></script>
+</body>
+</html>
