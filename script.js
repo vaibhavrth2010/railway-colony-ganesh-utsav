@@ -1,1321 +1,840 @@
-/* =========================================================
+/* =====================================================
    RAILWAY COLONY GANESH UTSAV SAMITI
-   WEBSITE JAVASCRIPT + SUPABASE GALLERY
-========================================================= */
+   MAIN JAVASCRIPT
+===================================================== */
 
 
-/* =========================================================
-   SUPABASE
-========================================================= */
+/* =====================================================
+   CONFIG
+===================================================== */
 
-const SUPABASE_URL =
-    "https://ewfglrnllbdngzhixkqm.supabase.co";
+const CONFIG = {
 
-const SUPABASE_KEY =
-    "sb_publishable_MD3tKZLy1240PioluSbH4g_4w5YMTnM";
+    instagram:
+        "https://www.instagram.com/railwaycolony_ganeshutsav_cph/",
 
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+    instagramUsername:
+        "@railwaycolony_ganeshutsav_cph",
+
+    contacts: [
+
+        {
+            name: "Contact 1",
+            number: "+91 97521 18871",
+            tel: "+919752118871",
+            whatsapp: "919752118871"
+        },
+
+        {
+            name: "Contact 2",
+            number: "+91 91319 82363",
+            tel: "+919131982363",
+            whatsapp: "919131982363"
+        }
+
+    ]
+
+};
 
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
-       CONFIG
-    ===================================================== */
+/* =====================================================
+   MEMBERS
+===================================================== */
 
-    const CONFIG = {
+const members = [
 
-        samitiName:
-            "Railway Colony Ganesh Utsav Samiti",
+    {
+        name: "Vaibhav Rathore",
+        instagram: "@_.vaibhav_rathore_",
+        url: "https://www.instagram.com/_.vaibhav_rathore_/"
+    },
 
-        city:
-            "Champa, Chhattisgarh",
+    {
+        name: "Gaurav Lahare",
+        instagram: "@espresso.goluu",
+        url: "https://www.instagram.com/espresso.goluu/"
+    },
 
-        instagramUsername:
-            "@railwaycolony_ganeshutsav_cph",
-
-        instagramUrl:
-            "https://www.instagram.com/railwaycolony_ganeshutsav_cph/",
-
-        address:
-            "Railway Colony, Champa, Chhattisgarh",
-
-        googleMapsUrl:
-            "https://maps.app.goo.gl/iWrGcVQCoZLjcJ8e6",
-
-        contactNumbers: [
-            "+91 97521 18871",
-            "+91 91319 82363"
+    {
+        name: "Manish Suryavanshi",
+        instagram: [
+            "@cg_manish_king_100000k",
+            "@mano.jk12345"
         ],
-
-        whatsappNumbers: [
-            "919752118871",
-            "919131982363"
+        url: [
+            "https://www.instagram.com/cg_manish_king_100000k/",
+            "https://www.instagram.com/mano.jk12345/"
         ]
+    },
 
-    };
+    {
+        name: "Aditya Roy",
+        instagram: "@adityaax_16",
+        url: "https://www.instagram.com/adityaax_16/"
+    },
 
+    {
+        name: "Virat Srivatsav",
+        instagram: "@srv_virat_05",
+        url: "https://www.instagram.com/srv_virat_05/"
+    },
 
-    /* =====================================================
-       MEMBERS
-    ===================================================== */
+    {
+        name: "Yash Raj Suryavanshi",
+        instagram: "@cg_yash_raj_350",
+        url: "https://www.instagram.com/cg_yash_raj_350/"
+    },
 
-    const MEMBERS = [
+    {
+        name: "Rahul Singh",
+        instagram: "@singh_5284",
+        url: "https://www.instagram.com/singh_5284/"
+    },
 
-        {
-            name: "Vaibhav Rathore",
-            instagram: [
-                {
-                    username: "@_.vaibhav_rathore_",
-                    url: "https://www.instagram.com/_.vaibhav_rathore_/"
-                }
-            ]
-        },
+    {
+        name: "Himanshu Patle",
+        instagram: "@_himanshu_patle.01",
+        url: "https://www.instagram.com/_himanshu_patle.01/"
+    },
 
-        {
-            name: "Gaurav Lahare",
-            instagram: [
-                {
-                    username: "@espresso.goluu",
-                    url: "https://www.instagram.com/espresso.goluu/"
-                }
-            ]
-        },
+    {
+        name: "Rupesh",
+        instagram: "@__10__rpsh.s.knwr__",
+        url: "https://www.instagram.com/__10__rpsh.s.knwr__/"
+    },
 
-        {
-            name: "Manish Suryavanshi",
-            instagram: [
-                {
-                    username: "@cg_manish_king_100000k",
-                    url: "https://www.instagram.com/cg_manish_king_100000k/"
-                },
-                {
-                    username: "@mano.jk12345",
-                    url: "https://www.instagram.com/mano.jk12345/"
-                }
-            ]
-        },
-
-        {
-            name: "Aditya Roy",
-            instagram: [
-                {
-                    username: "@adityaax_16",
-                    url: "https://www.instagram.com/adityaax_16/"
-                }
-            ]
-        },
-
-        {
-            name: "Virat Srivatsav",
-            instagram: [
-                {
-                    username: "@srv_virat_05",
-                    url: "https://www.instagram.com/srv_virat_05/"
-                }
-            ]
-        },
-
-        {
-            name: "Yash Raj Suryavanshi",
-            instagram: [
-                {
-                    username: "@cg_yash_raj_350",
-                    url: "https://www.instagram.com/cg_yash_raj_350/"
-                }
-            ]
-        },
-
-        {
-            name: "Rahul Singh",
-            instagram: [
-                {
-                    username: "@singh_5284",
-                    url: "https://www.instagram.com/singh_5284/"
-                }
-            ]
-        },
-
-        {
-            name: "Himanshu Patle",
-            instagram: [
-                {
-                    username: "@_himanshu_patle.01",
-                    url: "https://www.instagram.com/_himanshu_patle.01/"
-                }
-            ]
-        },
-
-        {
-            name: "Rupesh",
-            instagram: [
-                {
-                    username: "@__10__rpsh.s.knwr__",
-                    url: "https://www.instagram.com/__10__rpsh.s.knwr__/"
-                }
-            ]
-        },
-
-        {
-            name: "Abhishek Thakur",
-            instagram: [
-                {
-                    username: "@a__t_official",
-                    url: "https://www.instagram.com/a__t_official/"
-                }
-            ]
-        }
-
-    ];
-
-
-    /* =====================================================
-       VIDEO CATEGORIES
-    ===================================================== */
-
-    const VIDEO_CATEGORIES = [
-
-        {
-            title: "Pandal Making",
-            icon: "🔨",
-            folder: "pandal-making"
-        },
-
-        {
-            title: "Ganesh Ji Aagman",
-            icon: "🐘",
-            folder: "ganesh-ji-aagman"
-        },
-
-        {
-            title: "First Puja & Aarti",
-            icon: "🪔",
-            folder: "first-puja-aarti"
-        },
-
-        {
-            title: "Ganesh Utsav Events",
-            icon: "🎉",
-            folder: "ganesh-utsav-events"
-        },
-
-        {
-            title: "Hawan Puja",
-            icon: "🔥",
-            folder: "hawan-puja"
-        },
-
-        {
-            title: "Visarjan Dance",
-            icon: "🥁",
-            folder: "visarjan-dance"
-        },
-
-        {
-            title: "Final Goodbye & Visarjan",
-            icon: "🙏",
-            folder: "final-goodbye-visarjan"
-        }
-
-    ];
-
-
-    /* =====================================================
-       HELPERS
-    ===================================================== */
-
-    function get(id) {
-        return document.getElementById(id);
+    {
+        name: "Abhishek Thakur",
+        instagram: "@a__t_official",
+        url: "https://www.instagram.com/a__t_official/"
     }
 
+];
 
-    function setText(id, value) {
 
-        const element = get(id);
 
-        if (element) {
-            element.textContent = value;
-        }
+/* =====================================================
+   VIDEOS
+===================================================== */
 
+const videoGroups = [
+
+    {
+        number: "01",
+        category: "GANESH UTSAV",
+        title: "The Celebration",
+        videos: [
+
+            {
+                title: "Ganesh Ji Aagman",
+                id: "1-ULjnjaF273tj76zyDpQ1g8mFLxIDeuX"
+            },
+
+            {
+                title: "1st Puja",
+                id: "16l0TA9FE8DbLCdICgMFyETZwsS1lRqKi"
+            },
+
+            {
+                title: "Aarti",
+                id: "1lYOmhJaWLUDmiUPxtvcSSV9IxQTKFxHQ"
+            },
+
+            {
+                title: "Ganesh Utsav Events",
+                id: "1YiISt6ViCcaCvNmNcXprs9NjJr1mfZik"
+            },
+
+            {
+                title: "Havan",
+                id: "1gqPpC_wGqWcn3rM6ssWMlr5kyoRmGza-"
+            },
+
+            {
+                title: "Visarjan Dance",
+                id: "15-TUmbF6SlIL_qcY8dwTjCuB59n64EX1"
+            },
+
+            {
+                title: "Visarjan Dance",
+                id: "17H6t8w2pAF7zj8gW7b9d0jsipcmY_HME"
+            },
+
+            {
+                title: "Final Visarjan",
+                id: "1Xwhnq9r7qFsobS0C_LGxjYuzvkzUEStM"
+            }
+
+        ]
+    },
+
+
+    {
+        number: "02",
+        category: "SAMITI MEMBERS",
+        title: "The Memories",
+        videos: [
+
+            {
+                title: "Funny Video",
+                id: "1aPQW0l6PllK4zSfFSVuKWnpoYClxOdm8"
+            },
+
+            {
+                title: "Transition Video",
+                id: "1RRn-vy0A9t_AoAgUhVk5AQqwRrcDB7aN"
+            }
+
+        ]
+    },
+
+
+    {
+        number: "03",
+        category: "GANESH JI",
+        title: "Divine Moments",
+        videos: [
+
+            {
+                title: "Ganesh Ji Video",
+                id: "1sbE0yRBKOensgDJyM7yw_Kq3p5w9US0t"
+            }
+
+        ]
+    },
+
+
+    {
+        number: "04",
+        category: "OTHER VIDEOS",
+        title: "The Highlights",
+        videos: [
+
+            {
+                title: "Chanda Collection",
+                id: "1rCp5Wwb3V-XifKXT36uUSCgT2Txh_4d5"
+            },
+
+            {
+                title: "Murtikar Video Edit",
+                id: "1Q-JQIvXeRG_-jlf6BXh2vekp_Is872Xh"
+            }
+
+        ]
+    },
+
+
+    {
+        number: "05",
+        category: "PANDAL MAKING",
+        title: "Coming Soon",
+        comingSoon: true
     }
 
+];
 
-    function setHref(id, value) {
 
-        const element = get(id);
 
-        if (element) {
-            element.href = value;
+/* =====================================================
+   INLINE INSTAGRAM ICON
+===================================================== */
+
+function instagramIcon(className = "") {
+
+    return `
+        <svg
+            class="instagram-svg ${className}"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+
+            <rect
+                x="2"
+                y="2"
+                width="20"
+                height="20"
+                rx="5"
+                fill="url(#instagramGradient)"
+            />
+
+            <rect
+                x="6.5"
+                y="6.5"
+                width="11"
+                height="11"
+                rx="3"
+                fill="none"
+                stroke="white"
+                stroke-width="1.7"
+            />
+
+            <circle
+                cx="12"
+                cy="12"
+                r="2.7"
+                fill="none"
+                stroke="white"
+                stroke-width="1.7"
+            />
+
+            <circle
+                cx="16.7"
+                cy="7.5"
+                r="1"
+                fill="white"
+            />
+
+        </svg>
+    `;
+}
+
+
+
+/* =====================================================
+   MEMBERS
+===================================================== */
+
+function renderMembers() {
+
+    const grid =
+        document.getElementById("membersGrid");
+
+    if (!grid) return;
+
+
+    grid.innerHTML = "";
+
+
+    members.forEach((member, index) => {
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "member-card reveal";
+
+
+        const firstLetter =
+            member.name.charAt(0).toUpperCase();
+
+
+        let instagramLinks = "";
+
+
+        if (Array.isArray(member.instagram)) {
+
+            member.instagram.forEach(
+                (username, i) => {
+
+                    instagramLinks += `
+
+                        <a
+                            href="${member.url[i]}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="member-instagram"
+                        >
+
+                            ${instagramIcon()}
+
+                            ${username}
+
+                        </a>
+
+                    `;
+
+                }
+            );
+
+        } else {
+
+            instagramLinks = `
+
+                <a
+                    href="${member.url}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="member-instagram"
+                >
+
+                    ${instagramIcon()}
+
+                    ${member.instagram}
+
+                </a>
+
+            `;
+
         }
 
-    }
 
+        card.innerHTML = `
 
-    /* =====================================================
-       INSTAGRAM SVG
-    ===================================================== */
+            <div class="member-avatar">
+                ${firstLetter}
+            </div>
 
-    function instagramIcon() {
-
-        return `
-            <svg viewBox="0 0 24 24"
-                 aria-hidden="true"
-                 xmlns="http://www.w3.org/2000/svg">
-
-                <rect
-                    x="3"
-                    y="3"
-                    width="18"
-                    height="18"
-                    rx="5">
-                </rect>
-
-                <circle
-                    cx="12"
-                    cy="12"
-                    r="4">
-                </circle>
-
-                <circle
-                    cx="17.5"
-                    cy="6.5"
-                    r="1">
-                </circle>
-
-            </svg>
-        `;
-
-    }
-
-
-    /* =====================================================
-       BASIC DATA
-    ===================================================== */
-
-    setText(
-        "officialInstagram",
-        CONFIG.instagramUsername
-    );
-
-    setHref(
-        "officialInstagramLink",
-        CONFIG.instagramUrl
-    );
-
-    setHref(
-        "mapsLink",
-        CONFIG.googleMapsUrl
-    );
-
-    setText(
-        "currentYear",
-        new Date().getFullYear()
-    );
-
-
-    /* =====================================================
-       MEMBERS
-    ===================================================== */
-
-    function renderMembers() {
-
-        const container =
-            get("membersGrid");
-
-        if (!container) {
-            return;
-        }
-
-        container.innerHTML = "";
-
-        MEMBERS.forEach(member => {
-
-            const card =
-                document.createElement("article");
-
-            card.className =
-                "member-card reveal";
-
-            const initials =
-                member.name
-                    .split(" ")
-                    .map(word => word[0])
-                    .join("")
-                    .slice(0, 2)
-                    .toUpperCase();
-
-            let instagramHTML = "";
-
-            member.instagram.forEach(account => {
-
-                instagramHTML += `
-                    <a
-                        href="${account.url}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="member-instagram"
-                    >
-                        ${instagramIcon()}
-
-                        <span>
-                            ${account.username}
-                        </span>
-                    </a>
-                `;
-
-            });
-
-            card.innerHTML = `
-
-                <div class="member-avatar">
-                    ${initials}
-                </div>
+            <div class="member-info">
 
                 <h3>
                     ${member.name}
                 </h3>
 
-                <div class="member-instagram-list">
-                    ${instagramHTML}
+                <div class="member-instagrams">
+                    ${instagramLinks}
                 </div>
 
-            `;
-
-            container.appendChild(card);
-
-        });
-
-    }
-
-
-    renderMembers();
-
-
-    /* =====================================================
-       SUPABASE PHOTO GALLERY
-    ===================================================== */
-
-    async function loadPhotos() {
-
-        const gallery =
-            get("photoGallery");
-
-        if (!gallery) {
-            return;
-        }
-
-        gallery.innerHTML = `
-
-            <div class="gallery-loading">
-                <div class="gallery-spinner"></div>
-                <span>Loading memories...</span>
             </div>
 
         `;
 
-        try {
 
-            const {
-                data,
-                error
-            } = await supabaseClient
-                .storage
-                .from("photos")
-                .list("", {
-                    limit: 100,
-                    sortBy: {
-                        column: "created_at",
-                        order: "desc"
-                    }
-                });
+        grid.appendChild(card);
 
-            if (error) {
-                throw error;
-            }
+    });
 
-            const files =
-                (data || []).filter(
-                    file =>
-                        file.name &&
-                        !file.name.startsWith(".")
-                );
 
-            if (!files.length) {
+    requestAnimationFrame(() => {
 
-                gallery.innerHTML = `
+        observeReveals();
 
-                    <div class="gallery-coming-soon reveal">
+    });
 
-                        <div class="coming-icon">
-                            📸
-                        </div>
+}
 
-                        <strong>
-                            Photos Coming Soon
-                        </strong>
 
-                        <span>
-                            Real Ganesh Utsav photos will appear here.
-                        </span>
 
+/* =====================================================
+   VIDEO CARD
+===================================================== */
+
+function createVideoCard(video) {
+
+    return `
+
+        <article class="video-card reveal">
+
+            <div class="video-frame">
+
+                <iframe
+                    class="drive-video"
+                    src="https://drive.google.com/file/d/${video.id}/preview"
+                    title="${video.title}"
+                    allow="autoplay; fullscreen"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+
+            </div>
+
+            <div class="video-info">
+
+                <h4>
+                    ${video.title}
+                </h4>
+
+                <span>
+                    GOOGLE DRIVE VIDEO
+                </span>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   VIDEO COMING SOON
+===================================================== */
+
+function createComingSoonCard() {
+
+    return `
+
+        <article class="video-card reveal">
+
+            <div class="video-coming">
+
+                <div class="video-coming-inner">
+
+                    <div class="video-coming-icon">
+                        🎬
                     </div>
 
-                `;
-
-                return;
-            }
-
-            gallery.innerHTML = "";
-
-            files.forEach(file => {
-
-                const {
-                    data: publicData
-                } = supabaseClient
-                    .storage
-                    .from("photos")
-                    .getPublicUrl(file.name);
-
-                const image =
-                    document.createElement("div");
-
-                image.className =
-                    "gallery-item reveal";
-
-                image.innerHTML = `
-
-                    <img
-                        src="${publicData.publicUrl}"
-                        alt="Railway Colony Ganesh Utsav"
-                        loading="lazy"
-                        data-lightbox="${publicData.publicUrl}"
-                    >
-
-                `;
-
-                gallery.appendChild(image);
-
-            });
-
-            setupReveal();
-
-        } catch (error) {
-
-            console.error(
-                "Photo loading error:",
-                error
-            );
-
-            gallery.innerHTML = `
-
-                <div class="gallery-coming-soon reveal">
-
-                    <div class="coming-icon">
-                        📸
-                    </div>
-
-                    <strong>
-                        Gallery will be updated soon
-                    </strong>
-
-                    <span>
-                        Please check again later.
-                    </span>
-
-                </div>
-
-            `;
-
-        }
-
-    }
-
-
-    loadPhotos();
-
-
-    /* =====================================================
-       SUPABASE VIDEO GALLERY
-    ===================================================== */
-
-    async function loadVideos() {
-
-        const container =
-            get("videoCategories");
-
-        if (!container) {
-            return;
-        }
-
-        container.innerHTML = "";
-
-        for (const category of VIDEO_CATEGORIES) {
-
-            const section =
-                document.createElement("div");
-
-            section.className =
-                "video-category reveal";
-
-            section.innerHTML = `
-
-                <div class="video-category-header">
-
-                    <div class="video-category-icon">
-                        ${category.icon}
-                    </div>
-
-                    <h3>
-                        ${category.title}
-                    </h3>
-
-                </div>
-
-                <div
-                    class="video-grid"
-                    data-video-folder="${category.folder}"
-                >
-
-                    <div class="video-card">
-                        <span>
-                            Loading videos...
-                        </span>
-                    </div>
-
-                </div>
-
-            `;
-
-            container.appendChild(section);
-
-            await loadCategoryVideos(
-                category,
-                section.querySelector(".video-grid")
-            );
-
-        }
-
-        setupReveal();
-
-    }
-
-
-    async function loadCategoryVideos(
-        category,
-        videoGrid
-    ) {
-
-        try {
-
-            const {
-                data,
-                error
-            } = await supabaseClient
-                .storage
-                .from("videos")
-                .list(category.folder, {
-                    limit: 100,
-                    sortBy: {
-                        column: "created_at",
-                        order: "desc"
-                    }
-                });
-
-            if (error) {
-                throw error;
-            }
-
-            const files =
-                (data || []).filter(
-                    file =>
-                        file.name &&
-                        !file.name.startsWith(".")
-                );
-
-            if (!files.length) {
-
-                videoGrid.innerHTML = `
-
-                    <div class="video-card video-empty">
-
-                        <span>
-                            ▶
-                        </span>
-
-                        <strong>
-                            Videos coming soon
-                        </strong>
-
-                    </div>
-
-                `;
-
-                return;
-
-            }
-
-            videoGrid.innerHTML = "";
-
-            files.forEach(file => {
-
-                const filePath =
-                    `${category.folder}/${file.name}`;
-
-                const {
-                    data: publicData
-                } = supabaseClient
-                    .storage
-                    .from("videos")
-                    .getPublicUrl(filePath);
-
-                const card =
-                    document.createElement("div");
-
-                card.className =
-                    "video-card video-card-real";
-
-                card.innerHTML = `
-
-                    <video
-                        controls
-                        preload="metadata"
-                        playsinline
-                    >
-                        <source
-                            src="${publicData.publicUrl}"
-                        >
-                        Your browser does not support video.
-                    </video>
-
-                `;
-
-                videoGrid.appendChild(card);
-
-            });
-
-        } catch (error) {
-
-            console.error(
-                "Video loading error:",
-                error
-            );
-
-            videoGrid.innerHTML = `
-
-                <div class="video-card video-empty">
-
-                    <span>
-                        ⚠️
-                    </span>
-
-                    <strong>
-                        Videos coming soon
-                    </strong>
-
-                </div>
-
-            `;
-
-        }
-
-    }
-
-
-    loadVideos();
-
-
-    /* =====================================================
-       CONTACT
-    ===================================================== */
-
-    function renderContacts() {
-
-        const container =
-            get("contactGrid");
-
-        if (!container) {
-            return;
-        }
-
-        container.innerHTML = "";
-
-
-        CONFIG.contactNumbers.forEach(number => {
-
-            const telNumber =
-                number.replace(/\D/g, "");
-
-            const card =
-                document.createElement("div");
-
-            card.className =
-                "contact-card reveal";
-
-            card.innerHTML = `
-
-                <div class="contact-icon">
-                    📞
-                </div>
-
-                <h3>
-                    Call
-                </h3>
-
-                <p>
-                    ${number}
-                </p>
-
-                <a
-                    href="tel:+${telNumber}"
-                    class="contact-link"
-                >
-                    Call Now
-                </a>
-
-            `;
-
-            container.appendChild(card);
-
-        });
-
-
-        CONFIG.whatsappNumbers.forEach(
-            (number, index) => {
-
-                const displayNumber =
-                    CONFIG.contactNumbers[index];
-
-                const card =
-                    document.createElement("div");
-
-                card.className =
-                    "contact-card reveal";
-
-                card.innerHTML = `
-
-                    <div class="contact-icon">
-                        💬
-                    </div>
-
-                    <h3>
-                        WhatsApp
-                    </h3>
+                    <h4>
+                        Pandal Making
+                    </h4>
 
                     <p>
-                        ${displayNumber}
+                        This video will be added here soon.
                     </p>
 
+                </div>
+
+            </div>
+
+            <div class="video-info">
+
+                <h4>
+                    Coming Soon
+                </h4>
+
+                <span>
+                    VIDEO WILL BE ADDED LATER
+                </span>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   VIDEO GROUP
+===================================================== */
+
+function createVideoGroup(group) {
+
+    const section =
+        document.createElement("section");
+
+    section.className =
+        "video-category";
+
+
+    let cards = "";
+
+
+    if (group.comingSoon) {
+
+        cards =
+            createComingSoonCard();
+
+    } else {
+
+        cards =
+            group.videos
+                .map(createVideoCard)
+                .join("");
+
+    }
+
+
+    const countText =
+        group.comingSoon
+            ? "COMING SOON"
+            : `${group.videos.length} VIDEO${group.videos.length === 1 ? "" : "S"}`;
+
+
+    section.innerHTML = `
+
+        <div class="video-category-heading">
+
+            <div>
+
+                <span class="video-category-number">
+                    ${group.number} • ${group.category}
+                </span>
+
+                <h3 class="video-category-title">
+                    ${group.title}
+                </h3>
+
+                <span class="video-category-subtitle">
+                    ${group.comingSoon
+                        ? "Video will be uploaded later"
+                        : group.category === "GANESH UTSAV"
+                            ? "Moments from our celebration"
+                            : group.category === "SAMITI MEMBERS"
+                                ? "Memories with the team"
+                                : group.category === "GANESH JI"
+                                    ? "Moments of devotion"
+                                    : "Special moments"
+                    }
+                </span>
+
+            </div>
+
+            <span class="video-count">
+                ${countText}
+            </span>
+
+        </div>
+
+
+        <div class="video-grid">
+
+            ${cards}
+
+        </div>
+
+    `;
+
+
+    return section;
+
+}
+
+
+
+/* =====================================================
+   VIDEO GALLERY
+===================================================== */
+
+function renderVideos() {
+
+    const gallery =
+        document.getElementById("videoGallery");
+
+    if (!gallery) return;
+
+
+    gallery.innerHTML = "";
+
+
+    videoGroups.forEach(group => {
+
+        gallery.appendChild(
+            createVideoGroup(group)
+        );
+
+    });
+
+
+    requestAnimationFrame(() => {
+
+        observeReveals();
+
+    });
+
+}
+
+
+
+/* =====================================================
+   CONTACTS
+===================================================== */
+
+function renderContacts() {
+
+    const grid =
+        document.getElementById("contactGrid");
+
+    if (!grid) return;
+
+
+    grid.innerHTML = "";
+
+
+    CONFIG.contacts.forEach(contact => {
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "contact-card reveal";
+
+
+        card.innerHTML = `
+
+            <div class="contact-icon">
+                📞
+            </div>
+
+            <div class="contact-info">
+
+                <span>
+                    ${contact.name}
+                </span>
+
+                <strong>
+                    ${contact.number}
+                </strong>
+
+                <div class="contact-actions">
+
                     <a
-                        href="https://wa.me/${number}"
+                        href="tel:${contact.tel}"
+                        class="contact-action"
+                    >
+                        Call
+                    </a>
+
+                    <a
+                        href="https://wa.me/${contact.whatsapp}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="contact-link"
+                        class="contact-action"
                     >
                         WhatsApp
                     </a>
 
-                `;
+                </div>
 
-                container.appendChild(card);
-
-            }
-        );
-
-
-        const instagramCard =
-            document.createElement("div");
-
-        instagramCard.className =
-            "contact-card reveal";
-
-        instagramCard.innerHTML = `
-
-            <div class="contact-icon instagram-contact">
-                ${instagramIcon()}
             </div>
-
-            <h3>
-                Instagram
-            </h3>
-
-            <p>
-                ${CONFIG.instagramUsername}
-            </p>
-
-            <a
-                href="${CONFIG.instagramUrl}"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact-link instagram-contact-link"
-            >
-                Instagram
-            </a>
 
         `;
 
-        container.appendChild(
-            instagramCard
-        );
 
-    }
+        grid.appendChild(card);
 
+    });
 
-    renderContacts();
 
+    /* Official Instagram */
 
-    /* =====================================================
-       MOBILE MENU
-    ===================================================== */
+    const instagramCard =
+        document.createElement("article");
 
-    const menuToggle =
-        get("menuToggle");
+    instagramCard.className =
+        "contact-card instagram-contact reveal";
 
-    const navMenu =
-        get("navMenu");
 
-    if (menuToggle && navMenu) {
+    instagramCard.innerHTML = `
 
-        menuToggle.addEventListener(
-            "click",
-            () => {
+        <div class="contact-icon">
 
-                navMenu.classList.toggle(
-                    "active"
-                );
+            ${instagramIcon()}
 
-            }
-        );
+        </div>
 
+        <div class="contact-info">
 
-        navMenu
-            .querySelectorAll("a")
-            .forEach(link => {
+            <span>
+                OFFICIAL INSTAGRAM
+            </span>
 
-                link.addEventListener(
-                    "click",
-                    () => {
+            <strong>
+                ${CONFIG.instagramUsername}
+            </strong>
 
-                        navMenu.classList.remove(
-                            "active"
-                        );
+            <div class="contact-actions">
 
-                    }
-                );
+                <a
+                    href="${CONFIG.instagram}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-action"
+                >
+                    Open Instagram
+                </a>
 
-            });
+            </div>
 
-    }
+        </div>
 
+    `;
 
-    /* =====================================================
-       SHARE
-    ===================================================== */
 
-    const shareButton =
-        get("shareButton");
+    grid.appendChild(instagramCard);
 
-    if (shareButton) {
 
-        shareButton.addEventListener(
-            "click",
-            async () => {
+    requestAnimationFrame(() => {
 
-                const shareData = {
+        observeReveals();
 
-                    title:
-                        CONFIG.samitiName,
+    });
 
-                    text:
-                        "Railway Colony Ganesh Utsav Samiti, Champa, Chhattisgarh",
+}
 
-                    url:
-                        window.location.href
 
-                };
 
-                try {
+/* =====================================================
+   PETAL RAIN
+===================================================== */
 
-                    if (navigator.share) {
+function createPetal() {
 
-                        await navigator.share(
-                            shareData
-                        );
+    const container =
+        document.getElementById("petalContainer");
 
-                        showToast(
-                            "Website shared successfully 🙏"
-                        );
+    if (!container) return;
 
-                    } else {
 
-                        await navigator.clipboard.writeText(
-                            window.location.href
-                        );
+    const petal =
+        document.createElement("span");
 
-                        showToast(
-                            "Website link copied!"
-                        );
+    petal.className = "petal";
 
-                    }
 
-                } catch (error) {
+    const left =
+        Math.random() * 100;
 
-                    if (
-                        error &&
-                        error.name !== "AbortError"
-                    ) {
+    const duration =
+        7 + Math.random() * 8;
 
-                        showToast(
-                            "Could not share the website."
-                        );
+    const delay =
+        Math.random() * 2;
 
-                    }
+    const drift =
+        (Math.random() * 220) - 110;
 
-                }
 
-            }
-        );
+    petal.style.left =
+        `${left}%`;
 
-    }
+    petal.style.animationDuration =
+        `${duration}s, ${1.5 + Math.random() * 2}s`;
 
+    petal.style.animationDelay =
+        `${delay}s`;
 
-    /* =====================================================
-       TOAST
-    ===================================================== */
-
-    const toast =
-        get("toast");
-
-    let toastTimer;
-
-
-    function showToast(message) {
-
-        if (!toast) {
-            return;
-        }
-
-        clearTimeout(toastTimer);
-
-        toast.textContent =
-            message;
-
-        toast.classList.add(
-            "show"
-        );
-
-        toastTimer =
-            setTimeout(() => {
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            }, 2800);
-
-    }
-
-
-    /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
-
-    function setupReveal() {
-
-        const elements =
-            document.querySelectorAll(
-                ".reveal:not(.revealed)"
-            );
-
-        if (
-            !("IntersectionObserver" in window)
-        ) {
-
-            elements.forEach(element => {
-
-                element.classList.add(
-                    "revealed"
-                );
-
-            });
-
-            return;
-
-        }
-
-
-        const observer =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "revealed"
-                            );
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.12
-                }
-            );
-
-
-        elements.forEach(element => {
-
-            observer.observe(
-                element
-            );
-
-        });
-
-    }
-
-
-    setupReveal();
-
-
-    /* =====================================================
-       FALLING PETALS
-    ===================================================== */
-
-    const petals =
-        get("petals");
-
-
-    function createPetal() {
-
-        if (!petals) {
-            return;
-        }
-
-        const petal =
-            document.createElement("div");
-
-        petal.className =
-            "petal";
-
-        const size =
-            Math.random() * 6 + 5;
-
-        const left =
-            Math.random() * 100;
-
-        const duration =
-            Math.random() * 5 + 6;
-
-        const delay =
-            Math.random() * 2;
-
-        petal.style.left =
-            `${left}%`;
-
-        petal.style.width =
-            `${size}px`;
-
-        petal.style.height =
-            `${size * 1.6}px`;
-
-        petal.style.animationDuration =
-            `${duration}s`;
-
-        petal.style.animationDelay =
-            `${delay}s`;
-
-        petal.style.opacity =
-            `${Math.random() * 0.5 + 0.25}`;
-
-        petals.appendChild(
-            petal
-        );
-
-        setTimeout(() => {
-
-            petal.remove();
-
-        }, (duration + delay) * 1000 + 500);
-
-    }
-
-
-    for (
-        let i = 0;
-        i < 18;
-        i++
-    ) {
-
-        setTimeout(
-            createPetal,
-            i * 300
-        );
-
-    }
-
-
-    setInterval(
-        createPetal,
-        650
+    petal.style.setProperty(
+        "--drift",
+        `${drift}px`
     );
 
 
-    /* =====================================================
-       LIGHTBOX
-    ===================================================== */
+    const scale =
+        0.55 + Math.random() * 0.9;
 
-    const lightbox =
-        get("lightbox");
-
-    const lightboxImage =
-        get("lightboxImage");
-
-    const lightboxClose =
-        get("lightboxClose");
+    petal.style.transform =
+        `scale(${scale})`;
 
 
-    function closeLightbox() {
-
-        if (!lightbox) {
-            return;
-        }
-
-        lightbox.classList.remove(
-            "active"
-        );
-
-        if (lightboxImage) {
-            lightboxImage.src = "";
-        }
-
-    }
+    container.appendChild(petal);
 
 
-    if (lightboxClose) {
+    setTimeout(() => {
 
-        lightboxClose.addEventListener(
-            "click",
-            closeLightbox
-        );
+        petal.remove();
 
-    }
+    }, (duration + delay) * 1000 + 1000);
 
-
-    if (lightbox) {
-
-        lightbox.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    event.target === lightbox
-                ) {
-
-                    closeLightbox();
-
-                }
-
-            }
-        );
-
-    }
+}
 
 
-    document.addEventListener(
-        "keydown",
-        event => {
 
-            if (
-                event.key === "Escape"
-            ) {
+/* =====================================================
+   NAVBAR
+===================================================== */
 
-                closeLightbox();
-
-            }
-
-        }
-    );
-
-
-    document.addEventListener(
-        "click",
-        event => {
-
-            const image =
-                event.target.closest(
-                    "[data-lightbox]"
-                );
-
-            if (!image) {
-                return;
-            }
-
-            if (
-                !lightbox ||
-                !lightboxImage
-            ) {
-
-                return;
-
-            }
-
-            lightboxImage.src =
-                image.dataset.lightbox;
-
-            lightbox.classList.add(
-                "active"
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       NAVBAR
-    ===================================================== */
+function setupNavbar() {
 
     const navbar =
-        document.querySelector(
-            ".navbar"
-        );
+        document.getElementById("navbar");
+
+    if (!navbar) return;
 
 
     function updateNavbar() {
 
-        if (!navbar) {
-            return;
-        }
+        if (window.scrollY > 30) {
 
-        if (
-            window.scrollY > 50
-        ) {
-
-            navbar.style.background =
-                "rgba(7, 3, 10, 0.92)";
-
-            navbar.style.boxShadow =
-                "0 10px 35px rgba(0,0,0,0.25)";
+            navbar.classList.add("scrolled");
 
         } else {
 
-            navbar.style.background =
-                "rgba(7, 3, 10, 0.72)";
-
-            navbar.style.boxShadow =
-                "none";
+            navbar.classList.remove("scrolled");
 
         }
 
@@ -1325,90 +844,342 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener(
         "scroll",
         updateNavbar,
-        {
-            passive: true
-        }
+        { passive: true }
     );
+
 
     updateNavbar();
 
+}
 
-    /* =====================================================
-       ACTIVE NAVIGATION
-    ===================================================== */
 
-    const sections =
-        document.querySelectorAll(
-            "main section[id]"
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function setupMobileMenu() {
+
+    const toggle =
+        document.getElementById("menuToggle");
+
+    const menu =
+        document.getElementById("navMenu");
+
+    if (!toggle || !menu) return;
+
+
+    toggle.addEventListener(
+        "click",
+        () => {
+
+            menu.classList.toggle("open");
+
+        }
+    );
+
+
+    menu.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                menu.classList.remove("open");
+
+            }
         );
 
-    const navLinks =
+    });
+
+}
+
+
+
+/* =====================================================
+   SHARE
+===================================================== */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById("toast");
+
+    const toastMessage =
+        document.getElementById("toastMessage");
+
+    if (!toast || !toastMessage) return;
+
+
+    toastMessage.textContent =
+        message;
+
+
+    toast.classList.add("show");
+
+
+    clearTimeout(
+        window.toastTimer
+    );
+
+
+    window.toastTimer =
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+        }, 2800);
+
+}
+
+
+
+function setupShare() {
+
+    const button =
+        document.getElementById("shareButton");
+
+    if (!button) return;
+
+
+    button.addEventListener(
+        "click",
+        async () => {
+
+            const shareData = {
+
+                title:
+                    "Railway Colony Ganesh Utsav Samiti",
+
+                text:
+                    "Check out Railway Colony Ganesh Utsav Samiti, Champa, Chhattisgarh.",
+
+                url:
+                    window.location.href
+
+            };
+
+
+            try {
+
+                if (
+                    navigator.share
+                ) {
+
+                    await navigator.share(
+                        shareData
+                    );
+
+                    return;
+
+                }
+
+
+                await navigator.clipboard.writeText(
+                    window.location.href
+                );
+
+
+                showToast(
+                    "Website link copied!"
+                );
+
+            } catch (error) {
+
+                if (
+                    error &&
+                    error.name === "AbortError"
+                ) {
+
+                    return;
+
+                }
+
+
+                showToast(
+                    "Share cancelled."
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+let revealObserver;
+
+
+function observeReveals() {
+
+    const elements =
         document.querySelectorAll(
-            "#navMenu a"
+            ".reveal:not(.reveal-observed)"
         );
 
 
-    if (
-        sections.length &&
-        navLinks.length
-    ) {
+    if (!elements.length) return;
 
-        const sectionObserver =
+
+    if (!revealObserver) {
+
+        revealObserver =
             new IntersectionObserver(
                 entries => {
 
-                    entries.forEach(entry => {
+                    entries.forEach(
+                        entry => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-                            navLinks.forEach(link => {
-
-                                link.classList.remove(
-                                    "active-nav"
+                                entry.target.classList.add(
+                                    "visible"
                                 );
 
-                            });
-
-                            const activeLink =
-                                document.querySelector(
-                                    `#navMenu a[href="#${entry.target.id}"]`
-                                );
-
-                            if (activeLink) {
-
-                                activeLink.classList.add(
-                                    "active-nav"
+                                revealObserver.unobserve(
+                                    entry.target
                                 );
 
                             }
 
                         }
-
-                    });
+                    );
 
                 },
                 {
-                    rootMargin:
-                        "-35% 0px -55% 0px"
+                    threshold: 0.12,
+                    rootMargin: "0px 0px -40px 0px"
                 }
             );
-
-
-        sections.forEach(section => {
-
-            sectionObserver.observe(
-                section
-            );
-
-        });
 
     }
 
 
-    console.log(
-        "🙏 Railway Colony Ganesh Utsav Samiti website loaded."
-    );
+    elements.forEach(element => {
 
-});
+        element.classList.add(
+            "reveal-observed"
+        );
+
+        revealObserver.observe(
+            element
+        );
+
+    });
+
+}
+
+
+
+/* =====================================================
+   SMOOTH SCROLL FALLBACK
+===================================================== */
+
+function setupSmoothScroll() {
+
+    document.querySelectorAll(
+        'a[href^="#"]'
+    ).forEach(link => {
+
+        link.addEventListener(
+            "click",
+            event => {
+
+                const targetId =
+                    link.getAttribute("href");
+
+
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+
+                    return;
+
+                }
+
+
+                const target =
+                    document.querySelector(
+                        targetId
+                    );
+
+
+                if (!target) return;
+
+
+                event.preventDefault();
+
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+        );
+
+    });
+
+}
+
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        renderMembers();
+
+        renderVideos();
+
+        renderContacts();
+
+        setupNavbar();
+
+        setupMobileMenu();
+
+        setupShare();
+
+        setupSmoothScroll();
+
+        observeReveals();
+
+
+        /* Start flower/petal rain */
+
+        setInterval(
+            createPetal,
+            850
+        );
+
+
+        /* Initial petals */
+
+        for (
+            let i = 0;
+            i < 8;
+            i++
+        ) {
+
+            setTimeout(
+                createPetal,
+                i * 250
+            );
+
+        }
+
+    }
+);
