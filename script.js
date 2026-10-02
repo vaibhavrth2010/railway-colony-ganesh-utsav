@@ -10,25 +10,29 @@ const CONFIG = {
     city:
         "Champa, Chhattisgarh",
 
-   instagramUsername:
-    "@railwaycolony_ganeshutsav_cph",
+    instagramUsername:
+        "@railwaycolony_ganeshutsav_cph",
 
-instagramUrl:
-    "https://www.instagram.com/railwaycolony_ganeshutsav_cph/",
+    instagramUrl:
+        "https://www.instagram.com/railwaycolony_ganeshutsav_cph/",
 
     address:
         "Railway Colony, Champa, Chhattisgarh",
 
     googleMapsUrl:
-         "https://maps.app.goo.gl/iWrGcVQCoZLjcJ8e6",
+        "https://maps.app.goo.gl/iWrGcVQCoZLjcJ8e6",
 
-    contactNumber:
-        "",
+    contactNumbers: [
+        "+91 97521 18871",
+        "+91 91319 82363"
+    ],
 
-    whatsappNumber:
-        ""
+    whatsappNumbers: [
+        "919752118871",
+        "919131982363"
+    ]
+
 };
-
 
 
 /* =====================================================
@@ -39,123 +43,89 @@ const members = [
 
     {
         name: "Vaibhav Rathore",
-
         instagram: "@_.vaibhav_rathore_",
-
         instagramUrl:
             "https://www.instagram.com/_.vaibhav_rathore_/"
     },
 
-
     {
         name: "Gaurav Lahare",
-
         instagram: "@espresso.goluu",
-
         instagramUrl:
             "https://www.instagram.com/espresso.goluu/"
     },
 
-
     {
         name: "Manish Suryavanshi",
-
         instagram: "@cg_manish_king_100000k",
-
         instagramUrl:
             "https://www.instagram.com/cg_manish_king_100000k/",
-
-        instagram2:
-            "@mano.jk12345",
-
+        instagram2: "@mano.jk12345",
         instagramUrl2:
             "https://www.instagram.com/mano.jk12345/"
     },
 
-
     {
         name: "Aditya Roy",
-
         instagram: "@adityaax_16",
-
         instagramUrl:
             "https://www.instagram.com/adityaax_16/"
     },
 
-
     {
         name: "Virat Srivatsav",
-
         instagram: "@srv_virat_05",
-
         instagramUrl:
             "https://www.instagram.com/srv_virat_05/"
     },
 
-
     {
         name: "Yash Raj Suryavanshi",
-
         instagram: "@cg_yash_raj_350",
-
         instagramUrl:
             "https://www.instagram.com/cg_yash_raj_350/"
     },
 
-
     {
         name: "Rahul Singh",
-
         instagram: "@singh_5284",
-
         instagramUrl:
             "https://www.instagram.com/singh_5284/"
     },
 
-
     {
         name: "Himanshu Patle",
-
         instagram: "@_himanshu_patle.01",
-
         instagramUrl:
             "https://www.instagram.com/_himanshu_patle.01/"
     },
 
-
     {
         name: "Rupesh",
-
         instagram: "@__10__rpsh.s.knwr__",
-
         instagramUrl:
             "https://www.instagram.com/__10__rpsh.s.knwr__/"
     },
 
-
     {
         name: "Abhishek Thakur",
-
         instagram: "@a__t_official",
-
         instagramUrl:
             "https://www.instagram.com/a__t_official/"
     }
 
-    // ADD MORE MEMBERS HERE
-
 ];
-
 
 
 /* =====================================================
    PHOTO GALLERY
-   ONE SINGLE GALLERY
 ===================================================== */
 
 const photos = [
 
     /*
+    Add photos later.
+
     Example:
 
     {
@@ -163,122 +133,74 @@ const photos = [
         title: "Ganesh Utsav"
     }
 
-    Add your actual photos here later.
     */
 
 ];
 
 
-
 /* =====================================================
    VIDEO GALLERY
-   7 EVENT CATEGORIES
 ===================================================== */
 
 const videoCategories = [
 
     {
         title: "Pandal Making",
-
         icon: "🏗️",
-
         description:
             "Building and decorating our beautiful Ganesh Utsav pandal.",
-
-        videos: [
-
-            /*
-            Example:
-
-            {
-                src: "videos/pandal-making-1.mp4",
-                title: "Pandal Making"
-            }
-            */
-
-        ]
+        videos: []
     },
-
 
     {
         title: "Ganesh Ji Aagman",
-
         icon: "🥁",
-
         description:
             "The grand arrival of Ganesh Ji.",
-
         videos: []
-
     },
-
 
     {
         title: "First Puja & Aarti",
-
         icon: "🪔",
-
         description:
             "The first puja and aarti of Ganesh Utsav.",
-
         videos: []
-
     },
-
 
     {
         title: "Ganesh Utsav Events",
-
         icon: "🎉",
-
         description:
             "Games, celebrations and special Ganesh Utsav events.",
-
         videos: []
-
     },
-
 
     {
         title: "Hawan Puja",
-
         icon: "🔥",
-
         description:
             "Sacred hawan and puja moments.",
-
         videos: []
-
     },
-
 
     {
         title: "Visarjan Dance",
-
         icon: "💃",
-
         description:
             "Dance, celebration and unforgettable visarjan moments.",
-
         videos: []
-
     },
-
 
     {
         title: "Final Goodbye & Visarjan",
-
         icon: "🙏",
-
         description:
             "The final farewell to Ganesh Ji.",
-
         videos: []
-
     }
 
 ];
-
 
 
 /* =====================================================
@@ -311,65 +233,22 @@ function setupOfficialInstagram() {
     }
 
 
-    if (
-        link &&
-        CONFIG.instagramUrl
-    ) {
+    if (link) {
 
         link.href =
             CONFIG.instagramUrl;
 
     }
-    else if (link) {
-
-        link.href = "#";
-
-        link.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                showToast(
-                    "Official Instagram will be added soon."
-                );
-
-            }
-        );
-
-    }
 
 
-    if (
-        contactLink &&
-        CONFIG.instagramUrl
-    ) {
+    if (contactLink) {
 
         contactLink.href =
             CONFIG.instagramUrl;
 
     }
-    else if (contactLink) {
-
-        contactLink.href = "#";
-
-        contactLink.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                showToast(
-                    "Official Instagram will be added soon."
-                );
-
-            }
-        );
-
-    }
 
 }
-
 
 
 /* =====================================================
@@ -461,7 +340,6 @@ function renderMembers() {
 }
 
 
-
 /* =====================================================
    PHOTO GALLERY
 ===================================================== */
@@ -537,7 +415,6 @@ function renderPhotoGallery() {
         ).join("");
 
 }
-
 
 
 /* =====================================================
@@ -656,7 +533,6 @@ function renderVideoCategories() {
 }
 
 
-
 /* =====================================================
    LOCATION
 ===================================================== */
@@ -677,27 +553,8 @@ function setupLocation() {
             CONFIG.googleMapsUrl;
 
     }
-    else {
-
-        mapsLink.href = "#";
-
-        mapsLink.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                showToast(
-                    "Exact Google Maps location will be added soon."
-                );
-
-            }
-        );
-
-    }
 
 }
-
 
 
 /* =====================================================
@@ -706,103 +563,25 @@ function setupLocation() {
 
 function setupContact() {
 
-    const number =
-        document.getElementById(
-            "contactNumber"
-        );
+    /*
+       Contact numbers and WhatsApp links
+       are already directly inside index.html.
 
-    const callLink =
-        document.getElementById(
-            "callLink"
-        );
+       This function is kept so the website
+       initialization remains clean.
+    */
 
-    const whatsappLink =
-        document.getElementById(
-            "whatsappLink"
-        );
+    console.log(
+        "Contact numbers:",
+        CONFIG.contactNumbers
+    );
 
-
-    if (
-        CONFIG.contactNumber
-    ) {
-
-        if (number) {
-
-            number.textContent =
-                CONFIG.contactNumber;
-
-        }
-
-        if (callLink) {
-
-            callLink.href =
-                "tel:" +
-                CONFIG.contactNumber;
-
-        }
-
-    }
-    else {
-
-        if (number) {
-
-            number.textContent =
-                "Coming Soon";
-
-        }
-
-        if (callLink) {
-
-            callLink.href = "#";
-
-            callLink.addEventListener(
-                "click",
-                function(event) {
-
-                    event.preventDefault();
-
-                    showToast(
-                        "Contact number will be added soon."
-                    );
-
-                }
-            );
-
-        }
-
-    }
-
-
-    if (
-        CONFIG.whatsappNumber
-    ) {
-
-        whatsappLink.href =
-            "https://wa.me/" +
-            CONFIG.whatsappNumber;
-
-    }
-    else {
-
-        whatsappLink.href = "#";
-
-        whatsappLink.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                showToast(
-                    "WhatsApp number will be added soon."
-                );
-
-            }
-        );
-
-    }
+    console.log(
+        "WhatsApp numbers:",
+        CONFIG.whatsappNumbers
+    );
 
 }
-
 
 
 /* =====================================================
@@ -856,7 +635,6 @@ function setupMobileMenu() {
         );
 
 }
-
 
 
 /* =====================================================
@@ -938,7 +716,6 @@ function setupShare() {
 }
 
 
-
 /* =====================================================
    LIGHTBOX
 ===================================================== */
@@ -985,7 +762,6 @@ function closeLightbox() {
 }
 
 
-
 /* =====================================================
    TOAST
 ===================================================== */
@@ -1029,7 +805,6 @@ function showToast(message) {
         );
 
 }
-
 
 
 /* =====================================================
@@ -1098,7 +873,6 @@ function setupLightbox() {
 }
 
 
-
 /* =====================================================
    FLOWER PETALS
 ===================================================== */
@@ -1164,7 +938,6 @@ function createPetal() {
 }
 
 
-
 /* Start flower petals */
 
 setInterval(
@@ -1189,7 +962,6 @@ for (
 }
 
 
-
 /* =====================================================
    CURRENT YEAR
 ===================================================== */
@@ -1209,7 +981,6 @@ function setupYear() {
     }
 
 }
-
 
 
 /* =====================================================
