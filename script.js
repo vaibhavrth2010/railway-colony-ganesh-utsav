@@ -1,832 +1,997 @@
-/* =====================================================
-   WEBSITE CONFIGURATION
-===================================================== */
+/* =========================================================
+   RAILWAY COLONY GANESH UTSAV SAMITI
+   WEBSITE JAVASCRIPT
+========================================================= */
 
-const CONFIG = {
+document.addEventListener("DOMContentLoaded", () => {
 
-    samitiName:
-        "Railway Colony Ganesh Utsav Samiti",
+    /* =====================================================
+       CONFIG
+    ===================================================== */
 
-    city:
-        "Champa, Chhattisgarh",
+    const CONFIG = {
 
-    instagramUsername:
-        "@railwaycolony_ganeshutsav_cph",
+        samitiName:
+            "Railway Colony Ganesh Utsav Samiti",
 
-    instagramUrl:
-        "https://www.instagram.com/railwaycolony_ganeshutsav_cph/",
+        city:
+            "Champa, Chhattisgarh",
 
-    address:
-        "Railway Colony, Champa, Chhattisgarh",
+        instagramUsername:
+            "@railwaycolony_ganeshutsav_cph",
 
-    googleMapsUrl:
-        "https://maps.app.goo.gl/iWrGcVQCoZLjcJ8e6",
-
-    contactNumbers: [
-        "+91 97521 18871",
-        "+91 91319 82363"
-    ],
-
-    whatsappNumbers: [
-        "919752118871",
-        "919131982363"
-    ]
-
-};
-
-
-/* =====================================================
-   SAMITI MEMBERS
-===================================================== */
-
-const members = [
-
-    {
-        name: "Vaibhav Rathore",
-        instagram: "@_.vaibhav_rathore_",
         instagramUrl:
-            "https://www.instagram.com/_.vaibhav_rathore_/"
-    },
+            "https://www.instagram.com/railwaycolony_ganeshutsav_cph/",
 
-    {
-        name: "Gaurav Lahare",
-        instagram: "@espresso.goluu",
-        instagramUrl:
-            "https://www.instagram.com/espresso.goluu/"
-    },
+        address:
+            "Railway Colony, Champa, Chhattisgarh",
 
-    {
-        name: "Manish Suryavanshi",
-        instagram: "@cg_manish_king_100000k",
-        instagramUrl:
-            "https://www.instagram.com/cg_manish_king_100000k/",
-        instagram2: "@mano.jk12345",
-        instagramUrl2:
-            "https://www.instagram.com/mano.jk12345/"
-    },
+        googleMapsUrl:
+            "https://maps.app.goo.gl/iWrGcVQCoZLjcJ8e6",
 
-    {
-        name: "Aditya Roy",
-        instagram: "@adityaax_16",
-        instagramUrl:
-            "https://www.instagram.com/adityaax_16/"
-    },
+        contactNumbers: [
+            "+91 97521 18871",
+            "+91 91319 82363"
+        ],
 
-    {
-        name: "Virat Srivatsav",
-        instagram: "@srv_virat_05",
-        instagramUrl:
-            "https://www.instagram.com/srv_virat_05/"
-    },
+        whatsappNumbers: [
+            "919752118871",
+            "919131982363"
+        ]
 
-    {
-        name: "Yash Raj Suryavanshi",
-        instagram: "@cg_yash_raj_350",
-        instagramUrl:
-            "https://www.instagram.com/cg_yash_raj_350/"
-    },
-
-    {
-        name: "Rahul Singh",
-        instagram: "@singh_5284",
-        instagramUrl:
-            "https://www.instagram.com/singh_5284/"
-    },
-
-    {
-        name: "Himanshu Patle",
-        instagram: "@_himanshu_patle.01",
-        instagramUrl:
-            "https://www.instagram.com/_himanshu_patle.01/"
-    },
-
-    {
-        name: "Rupesh",
-        instagram: "@__10__rpsh.s.knwr__",
-        instagramUrl:
-            "https://www.instagram.com/__10__rpsh.s.knwr__/"
-    },
-
-    {
-        name: "Abhishek Thakur",
-        instagram: "@a__t_official",
-        instagramUrl:
-            "https://www.instagram.com/a__t_official/"
-    }
-
-];
+    };
 
 
-/* =====================================================
-   PHOTO GALLERY
-===================================================== */
+    /* =====================================================
+       MEMBERS
+    ===================================================== */
 
-const photos = [
+    const MEMBERS = [
 
-    /*
-    Add photos later.
-
-    Example:
-
-    {
-        image: "images/photo1.jpg",
-        title: "Ganesh Utsav"
-    }
-
-    */
-
-];
-
-
-/* =====================================================
-   VIDEO GALLERY
-===================================================== */
-
-const videoCategories = [
-
-    {
-        title: "Pandal Making",
-        icon: "🏗️",
-        description:
-            "Building and decorating our beautiful Ganesh Utsav pandal.",
-        videos: []
-    },
-
-    {
-        title: "Ganesh Ji Aagman",
-        icon: "🥁",
-        description:
-            "The grand arrival of Ganesh Ji.",
-        videos: []
-    },
-
-    {
-        title: "First Puja & Aarti",
-        icon: "🪔",
-        description:
-            "The first puja and aarti of Ganesh Utsav.",
-        videos: []
-    },
-
-    {
-        title: "Ganesh Utsav Events",
-        icon: "🎉",
-        description:
-            "Games, celebrations and special Ganesh Utsav events.",
-        videos: []
-    },
-
-    {
-        title: "Hawan Puja",
-        icon: "🔥",
-        description:
-            "Sacred hawan and puja moments.",
-        videos: []
-    },
-
-    {
-        title: "Visarjan Dance",
-        icon: "💃",
-        description:
-            "Dance, celebration and unforgettable visarjan moments.",
-        videos: []
-    },
-
-    {
-        title: "Final Goodbye & Visarjan",
-        icon: "🙏",
-        description:
-            "The final farewell to Ganesh Ji.",
-        videos: []
-    }
-
-];
-
-
-/* =====================================================
-   OFFICIAL INSTAGRAM
-===================================================== */
-
-function setupOfficialInstagram() {
-
-    const username =
-        document.getElementById(
-            "officialInstagram"
-        );
-
-    const link =
-        document.getElementById(
-            "officialInstagramLink"
-        );
-
-    const contactLink =
-        document.getElementById(
-            "contactInstagramLink"
-        );
-
-
-    if (username) {
-
-        username.textContent =
-            CONFIG.instagramUsername;
-
-    }
-
-
-    if (link) {
-
-        link.href =
-            CONFIG.instagramUrl;
-
-    }
-
-
-    if (contactLink) {
-
-        contactLink.href =
-            CONFIG.instagramUrl;
-
-    }
-
-}
-
-
-/* =====================================================
-   MEMBERS
-===================================================== */
-
-function renderMembers() {
-
-    const container =
-        document.getElementById(
-            "membersGrid"
-        );
-
-    if (!container) return;
-
-
-    container.innerHTML =
-        members.map(
-            (member) => {
-
-                const firstLetter =
-                    member.name
-                        .charAt(0)
-                        .toUpperCase();
-
-
-                let instagramHTML = "";
-
-
-                if (
-                    member.instagram &&
-                    member.instagramUrl
-                ) {
-
-                    instagramHTML += `
-                        <a
-                            href="${member.instagramUrl}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            📸 ${member.instagram}
-                        </a>
-                    `;
-
+        {
+            name: "Vaibhav Rathore",
+            instagram: [
+                {
+                    username: "@_.vaibhav_rathore_",
+                    url: "https://www.instagram.com/_.vaibhav_rathore_/"
                 }
+            ]
+        },
 
-
-                if (
-                    member.instagram2 &&
-                    member.instagramUrl2
-                ) {
-
-                    instagramHTML += `
-                        <a
-                            href="${member.instagramUrl2}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            📸 ${member.instagram2}
-                        </a>
-                    `;
-
+        {
+            name: "Gaurav Lahare",
+            instagram: [
+                {
+                    username: "@espresso.goluu",
+                    url: "https://www.instagram.com/espresso.goluu/"
                 }
+            ]
+        },
+
+        {
+            name: "Manish Suryavanshi",
+            instagram: [
+                {
+                    username: "@cg_manish_king_100000k",
+                    url: "https://www.instagram.com/cg_manish_king_100000k/"
+                },
+                {
+                    username: "@mano.jk12345",
+                    url: "https://www.instagram.com/mano.jk12345/"
+                }
+            ]
+        },
+
+        {
+            name: "Aditya Roy",
+            instagram: [
+                {
+                    username: "@adityaax_16",
+                    url: "https://www.instagram.com/adityaax_16/"
+                }
+            ]
+        },
+
+        {
+            name: "Virat Srivatsav",
+            instagram: [
+                {
+                    username: "@srv_virat_05",
+                    url: "https://www.instagram.com/srv_virat_05/"
+                }
+            ]
+        },
+
+        {
+            name: "Yash Raj Suryavanshi",
+            instagram: [
+                {
+                    username: "@cg_yash_raj_350",
+                    url: "https://www.instagram.com/cg_yash_raj_350/"
+                }
+            ]
+        },
+
+        {
+            name: "Rahul Singh",
+            instagram: [
+                {
+                    username: "@singh_5284",
+                    url: "https://www.instagram.com/singh_5284/"
+                }
+            ]
+        },
+
+        {
+            name: "Himanshu Patle",
+            instagram: [
+                {
+                    username: "@_himanshu_patle.01",
+                    url: "https://www.instagram.com/_himanshu_patle.01/"
+                }
+            ]
+        },
+
+        {
+            name: "Rupesh",
+            instagram: [
+                {
+                    username: "@__10__rpsh.s.knwr__",
+                    url: "https://www.instagram.com/__10__rpsh.s.knwr__/"
+                }
+            ]
+        },
+
+        {
+            name: "Abhishek Thakur",
+            instagram: [
+                {
+                    username: "@a__t_official",
+                    url: "https://www.instagram.com/a__t_official/"
+                }
+            ]
+        }
+
+    ];
 
 
-                return `
+    /* =====================================================
+       VIDEO CATEGORIES
+    ===================================================== */
 
-                    <div class="member-card">
+    const VIDEO_CATEGORIES = [
 
-                        <div class="member-avatar">
-                            ${firstLetter}
-                        </div>
+        {
+            title: "Pandal Making",
+            icon: "🔨"
+        },
 
-                        <h3>
-                            ${member.name}
-                        </h3>
+        {
+            title: "Ganesh Ji Aagman",
+            icon: "🐘"
+        },
 
-                        <div class="member-instagram-list">
-                            ${instagramHTML}
-                        </div>
+        {
+            title: "First Puja & Aarti",
+            icon: "🪔"
+        },
 
-                    </div>
+        {
+            title: "Ganesh Utsav Events",
+            icon: "🎉"
+        },
 
+        {
+            title: "Hawan Puja",
+            icon: "🔥"
+        },
+
+        {
+            title: "Visarjan Dance",
+            icon: "🥁"
+        },
+
+        {
+            title: "Final Goodbye & Visarjan",
+            icon: "🙏"
+        }
+
+    ];
+
+
+    /* =====================================================
+       HELPER FUNCTIONS
+    ===================================================== */
+
+    function get(id) {
+        return document.getElementById(id);
+    }
+
+
+    function setText(id, value) {
+
+        const element = get(id);
+
+        if (element) {
+            element.textContent = value;
+        }
+
+    }
+
+
+    function setHref(id, value) {
+
+        const element = get(id);
+
+        if (element) {
+            element.href = value;
+        }
+
+    }
+
+
+    /* =====================================================
+       INSTAGRAM SVG
+    ===================================================== */
+
+    function instagramIcon() {
+
+        return `
+            <svg viewBox="0 0 24 24"
+                 aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg">
+
+                <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="5">
+                </rect>
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="4">
+                </circle>
+
+                <circle
+                    cx="17.5"
+                    cy="6.5"
+                    r="1">
+                </circle>
+
+            </svg>
+        `;
+
+    }
+
+
+    /* =====================================================
+       BASIC WEBSITE DATA
+    ===================================================== */
+
+    setText(
+        "officialInstagram",
+        CONFIG.instagramUsername
+    );
+
+    setHref(
+        "officialInstagramLink",
+        CONFIG.instagramUrl
+    );
+
+    setHref(
+        "mapsLink",
+        CONFIG.googleMapsUrl
+    );
+
+    setText(
+        "currentYear",
+        new Date().getFullYear()
+    );
+
+
+    /* =====================================================
+       MEMBERS
+    ===================================================== */
+
+    function renderMembers() {
+
+        const container = get("membersGrid");
+
+        if (!container) {
+            return;
+        }
+
+        container.innerHTML = "";
+
+        MEMBERS.forEach((member, index) => {
+
+            const card = document.createElement("article");
+
+            card.className =
+                "member-card reveal";
+
+            const initials =
+                member.name
+                    .split(" ")
+                    .map(word => word[0])
+                    .join("")
+                    .slice(0, 2)
+                    .toUpperCase();
+
+            let instagramHTML = "";
+
+            member.instagram.forEach(account => {
+
+                instagramHTML += `
+                    <a
+                        href="${account.url}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="member-instagram"
+                    >
+
+                        ${instagramIcon()}
+
+                        <span>
+                            ${account.username}
+                        </span>
+
+                    </a>
                 `;
 
-            }
-        ).join("");
+            });
 
-}
+            card.innerHTML = `
+
+                <div class="member-avatar">
+                    ${initials}
+                </div>
+
+                <h3>
+                    ${member.name}
+                </h3>
+
+                <div class="member-instagram-list">
+                    ${instagramHTML}
+                </div>
+
+            `;
+
+            container.appendChild(card);
+
+        });
+
+    }
 
 
-/* =====================================================
-   PHOTO GALLERY
-===================================================== */
-
-function renderPhotoGallery() {
-
-    const gallery =
-        document.getElementById(
-            "photoGallery"
-        );
-
-    if (!gallery) return;
+    renderMembers();
 
 
-    if (photos.length === 0) {
+    /* =====================================================
+       PHOTO GALLERY
+    ===================================================== */
+
+    function renderGallery() {
+
+        const gallery = get("photoGallery");
+
+        if (!gallery) {
+            return;
+        }
 
         gallery.innerHTML = `
 
-            <div class="gallery-coming-soon">
+            <div class="gallery-coming-soon reveal">
 
                 <div class="coming-icon">
                     📸
                 </div>
 
-                <h3>
+                <strong>
                     Photos Coming Soon
-                </h3>
+                </strong>
 
-                <p>
-                    Our Ganesh Utsav memories
-                    will be added here.
-                </p>
+                <span>
+                    Real Ganesh Utsav photos will be added here.
+                </span>
+
+            </div>
+
+            <div class="gallery-coming-soon reveal">
+
+                <div class="coming-icon">
+                    🪔
+                </div>
+
+                <strong>
+                    Celebration Memories
+                </strong>
+
+                <span>
+                    Gallery will be updated with real photos.
+                </span>
+
+            </div>
+
+            <div class="gallery-coming-soon reveal">
+
+                <div class="coming-icon">
+                    🙏
+                </div>
+
+                <strong>
+                    Ganpati Bappa Morya
+                </strong>
+
+                <span>
+                    More memories coming soon.
+                </span>
 
             </div>
 
         `;
 
-        return;
-
     }
 
 
-    gallery.innerHTML =
-        photos.map(
-            (photo) => `
+    renderGallery();
 
-                <div
-                    class="gallery-item"
-                    onclick="openLightbox('${photo.image}')"
-                >
 
-                    <img
-                        src="${photo.image}"
-                        alt="${photo.title || "Ganesh Utsav Photo"}"
-                        loading="lazy"
-                    >
+    /* =====================================================
+       VIDEO CATEGORIES
+    ===================================================== */
 
-                    ${
-                        photo.title
-                        ?
-                        `
-                        <div class="gallery-caption">
-                            ${photo.title}
-                        </div>
-                        `
-                        :
-                        ""
-                    }
+    function renderVideos() {
+
+        const container =
+            get("videoCategories");
+
+        if (!container) {
+            return;
+        }
+
+        container.innerHTML = "";
+
+        VIDEO_CATEGORIES.forEach(category => {
+
+            const section =
+                document.createElement("div");
+
+            section.className =
+                "video-category reveal";
+
+            section.innerHTML = `
+
+                <div class="video-category-header">
+
+                    <div class="video-category-icon">
+                        ${category.icon}
+                    </div>
+
+                    <h3>
+                        ${category.title}
+                    </h3>
 
                 </div>
 
-            `
-        ).join("");
+                <div class="video-grid">
 
-}
-
-
-/* =====================================================
-   VIDEO GALLERY
-===================================================== */
-
-function renderVideoCategories() {
-
-    const container =
-        document.getElementById(
-            "videoCategories"
-        );
-
-    if (!container) return;
-
-
-    container.innerHTML =
-        videoCategories.map(
-            (category, categoryIndex) => {
-
-                const hasVideos =
-                    category.videos.length > 0;
-
-
-                return `
-
-                    <div class="video-category">
-
-                        <div class="video-category-header">
-
-                            <div class="video-category-icon">
-                                ${category.icon}
-                            </div>
-
-                            <div>
-
-                                <h3>
-                                    ${categoryIndex + 1}.
-                                    ${category.title}
-                                </h3>
-
-                                <p>
-                                    ${category.description}
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="video-grid">
-
-                            ${
-                                hasVideos
-
-                                ?
-
-                                category.videos.map(
-                                    (video) => `
-
-                                        <div class="video-card">
-
-                                            <video
-                                                controls
-                                                preload="metadata"
-                                                playsinline
-                                            >
-
-                                                <source
-                                                    src="${video.src}"
-                                                    type="video/mp4"
-                                                >
-
-                                                Your browser does not
-                                                support video playback.
-
-                                            </video>
-
-                                            <div class="video-card-title">
-                                                ${video.title}
-                                            </div>
-
-                                        </div>
-
-                                    `
-                                ).join("")
-
-                                :
-
-                                `
-
-                                    <div class="video-coming-soon">
-
-                                        <span>
-                                            🎬
-                                        </span>
-
-                                        <p>
-                                            Videos coming soon
-                                        </p>
-
-                                    </div>
-
-                                `
-                            }
-
-                        </div>
-
+                    <div class="video-card">
+                        <span>
+                            Videos coming soon
+                        </span>
                     </div>
 
-                `;
+                    <div class="video-card">
+                        <span>
+                            More memories soon
+                        </span>
+                    </div>
 
-            }
-        ).join("");
+                </div>
 
-}
+            `;
 
+            container.appendChild(section);
 
-/* =====================================================
-   LOCATION
-===================================================== */
-
-function setupLocation() {
-
-    const mapsLink =
-        document.getElementById(
-            "mapsLink"
-        );
-
-    if (!mapsLink) return;
-
-
-    if (CONFIG.googleMapsUrl) {
-
-        mapsLink.href =
-            CONFIG.googleMapsUrl;
+        });
 
     }
 
-}
+
+    renderVideos();
 
 
-/* =====================================================
-   CONTACT
-===================================================== */
+    /* =====================================================
+       CONTACT CARDS
+    ===================================================== */
 
-function setupContact() {
+    function renderContacts() {
 
-    /*
-       Contact numbers and WhatsApp links
-       are already directly inside index.html.
+        const container =
+            get("contactGrid");
 
-       This function is kept so the website
-       initialization remains clean.
-    */
-
-    console.log(
-        "Contact numbers:",
-        CONFIG.contactNumbers
-    );
-
-    console.log(
-        "WhatsApp numbers:",
-        CONFIG.whatsappNumbers
-    );
-
-}
-
-
-/* =====================================================
-   MOBILE MENU
-===================================================== */
-
-function setupMobileMenu() {
-
-    const toggle =
-        document.getElementById(
-            "menuToggle"
-        );
-
-    const nav =
-        document.getElementById(
-            "navMenu"
-        );
-
-
-    if (!toggle || !nav) return;
-
-
-    toggle.addEventListener(
-        "click",
-        function() {
-
-            nav.classList.toggle(
-                "active"
-            );
-
+        if (!container) {
+            return;
         }
-    );
+
+        container.innerHTML = "";
+
+        /* CALL CARDS */
+
+        CONFIG.contactNumbers.forEach(number => {
+
+            const telNumber =
+                number.replace(/\D/g, "");
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "contact-card reveal";
+
+            card.innerHTML = `
+
+                <div class="contact-icon">
+                    📞
+                </div>
+
+                <h3>
+                    Call
+                </h3>
+
+                <p>
+                    ${number}
+                </p>
+
+                <a
+                    href="tel:+${telNumber}"
+                    class="contact-link"
+                >
+                    Call Now
+                </a>
+
+            `;
+
+            container.appendChild(card);
+
+        });
 
 
-    nav.querySelectorAll("a")
-        .forEach(
-            (link) => {
+        /* WHATSAPP CARDS */
+
+        CONFIG.whatsappNumbers.forEach((number, index) => {
+
+            const displayNumber =
+                CONFIG.contactNumbers[index];
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "contact-card reveal";
+
+            card.innerHTML = `
+
+                <div class="contact-icon">
+                    💬
+                </div>
+
+                <h3>
+                    WhatsApp
+                </h3>
+
+                <p>
+                    ${displayNumber}
+                </p>
+
+                <a
+                    href="https://wa.me/${number}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-link"
+                >
+                    WhatsApp
+                </a>
+
+            `;
+
+            container.appendChild(card);
+
+        });
+
+
+        /* INSTAGRAM CARD */
+
+        const instagramCard =
+            document.createElement("div");
+
+        instagramCard.className =
+            "contact-card reveal";
+
+        instagramCard.innerHTML = `
+
+            <div class="contact-icon instagram-contact">
+                ${instagramIcon()}
+            </div>
+
+            <h3>
+                Instagram
+            </h3>
+
+            <p>
+                ${CONFIG.instagramUsername}
+            </p>
+
+            <a
+                id="contactInstagramLink"
+                href="${CONFIG.instagramUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-link instagram-contact-link"
+            >
+                Instagram
+            </a>
+
+        `;
+
+        container.appendChild(instagramCard);
+
+    }
+
+
+    renderContacts();
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const menuToggle =
+        get("menuToggle");
+
+    const navMenu =
+        get("navMenu");
+
+    if (menuToggle && navMenu) {
+
+        menuToggle.addEventListener(
+            "click",
+            () => {
+
+                navMenu.classList.toggle(
+                    "active"
+                );
+
+            }
+        );
+
+
+        navMenu
+            .querySelectorAll("a")
+            .forEach(link => {
 
                 link.addEventListener(
                     "click",
-                    function() {
+                    () => {
 
-                        nav.classList.remove(
+                        navMenu.classList.remove(
                             "active"
                         );
 
                     }
                 );
 
-            }
-        );
+            });
 
-}
-
-
-/* =====================================================
-   SHARE WEBSITE
-===================================================== */
-
-function setupShare() {
-
-    const button =
-        document.getElementById(
-            "shareButton"
-        );
-
-    if (!button) return;
+    }
 
 
-    button.addEventListener(
-        "click",
-        async function() {
+    /* =====================================================
+       SHARE WEBSITE
+    ===================================================== */
 
-            const shareData = {
+    const shareButton =
+        get("shareButton");
 
-                title:
-                    CONFIG.samitiName,
+    if (shareButton) {
 
-                text:
-                    "Railway Colony Ganesh Utsav Samiti, Champa, Chhattisgarh",
+        shareButton.addEventListener(
+            "click",
+            async () => {
 
-                url:
-                    window.location.href
+                const shareData = {
 
-            };
+                    title:
+                        CONFIG.samitiName,
 
+                    text:
+                        "Railway Colony Ganesh Utsav Samiti, Champa, Chhattisgarh",
 
-            if (
-                navigator.share
-            ) {
-
-                try {
-
-                    await navigator.share(
-                        shareData
-                    );
-
-                }
-                catch (error) {
-
-                    // User cancelled share
-
-                }
-
-            }
-            else {
-
-                try {
-
-                    await navigator.clipboard.writeText(
+                    url:
                         window.location.href
-                    );
 
-                    showToast(
-                        "Website link copied!"
-                    );
+                };
 
-                }
-                catch (error) {
 
-                    showToast(
-                        "Copy the website link from your browser."
-                    );
+                try {
+
+                    if (
+                        navigator.share
+                    ) {
+
+                        await navigator.share(
+                            shareData
+                        );
+
+                        showToast(
+                            "Website shared successfully 🙏"
+                        );
+
+                    } else {
+
+                        await navigator.clipboard.writeText(
+                            window.location.href
+                        );
+
+                        showToast(
+                            "Website link copied!"
+                        );
+
+                    }
+
+                } catch (error) {
+
+                    if (
+                        error &&
+                        error.name !== "AbortError"
+                    ) {
+
+                        showToast(
+                            "Could not share the website."
+                        );
+
+                    }
 
                 }
 
             }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   LIGHTBOX
-===================================================== */
-
-function openLightbox(imageSrc) {
-
-    const lightbox =
-        document.getElementById(
-            "lightbox"
         );
 
-    const image =
-        document.getElementById(
-            "lightboxImage"
-        );
+    }
 
 
-    if (!lightbox || !image) return;
-
-
-    image.src =
-        imageSrc;
-
-    lightbox.classList.add(
-        "active"
-    );
-
-}
-
-
-function closeLightbox() {
-
-    const lightbox =
-        document.getElementById(
-            "lightbox"
-        );
-
-    if (!lightbox) return;
-
-    lightbox.classList.remove(
-        "active"
-    );
-
-}
-
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-let toastTimeout;
-
-
-function showToast(message) {
+    /* =====================================================
+       TOAST
+    ===================================================== */
 
     const toast =
-        document.getElementById(
-            "toast"
+        get("toast");
+
+    let toastTimer;
+
+
+    function showToast(message) {
+
+        if (!toast) {
+            return;
+        }
+
+        clearTimeout(toastTimer);
+
+        toast.textContent =
+            message;
+
+        toast.classList.add(
+            "show"
         );
 
-    if (!toast) return;
-
-
-    toast.textContent =
-        message;
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        toastTimeout
-    );
-
-
-    toastTimeout =
-        setTimeout(
-            () => {
+        toastTimer =
+            setTimeout(() => {
 
                 toast.classList.remove(
                     "show"
                 );
 
-            },
-            2500
+            }, 2800);
+
+    }
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    function setupReveal() {
+
+        const elements =
+            document.querySelectorAll(
+                ".reveal"
+            );
+
+        if (
+            !("IntersectionObserver" in window)
+        ) {
+
+            elements.forEach(element => {
+
+                element.classList.add(
+                    "revealed"
+                );
+
+            });
+
+            return;
+
+        }
+
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "revealed"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        elements.forEach(element => {
+
+            observer.observe(
+                element
+            );
+
+        });
+
+    }
+
+
+    setupReveal();
+
+
+    /* =====================================================
+       FALLING PETALS
+    ===================================================== */
+
+    const petals =
+        get("petals");
+
+
+    function createPetal() {
+
+        if (!petals) {
+            return;
+        }
+
+        const petal =
+            document.createElement("div");
+
+        petal.className =
+            "petal";
+
+        const size =
+            Math.random() * 6 + 5;
+
+        const left =
+            Math.random() * 100;
+
+        const duration =
+            Math.random() * 5 + 6;
+
+        const delay =
+            Math.random() * 2;
+
+        petal.style.left =
+            `${left}%`;
+
+        petal.style.width =
+            `${size}px`;
+
+        petal.style.height =
+            `${size * 1.6}px`;
+
+        petal.style.animationDuration =
+            `${duration}s`;
+
+        petal.style.animationDelay =
+            `${delay}s`;
+
+        petal.style.opacity =
+            `${Math.random() * 0.5 + 0.25}`;
+
+        petals.appendChild(
+            petal
         );
 
-}
+
+        setTimeout(() => {
+
+            petal.remove();
+
+        }, (duration + delay) * 1000 + 500);
+
+    }
 
 
-/* =====================================================
-   LIGHTBOX EVENTS
-===================================================== */
+    for (
+        let i = 0;
+        i < 18;
+        i++
+    ) {
 
-function setupLightbox() {
-
-    const close =
-        document.getElementById(
-            "lightboxClose"
+        setTimeout(
+            createPetal,
+            i * 300
         );
+
+    }
+
+
+    setInterval(
+        createPetal,
+        650
+    );
+
+
+    /* =====================================================
+       LIGHTBOX
+    ===================================================== */
 
     const lightbox =
-        document.getElementById(
-            "lightbox"
+        get("lightbox");
+
+    const lightboxImage =
+        get("lightboxImage");
+
+    const lightboxClose =
+        get("lightboxClose");
+
+
+    function closeLightbox() {
+
+        if (!lightbox) {
+            return;
+        }
+
+        lightbox.classList.remove(
+            "active"
         );
 
+        if (lightboxImage) {
 
-    if (close) {
+            lightboxImage.src = "";
 
-        close.addEventListener(
+        }
+
+    }
+
+
+    if (lightboxClose) {
+
+        lightboxClose.addEventListener(
             "click",
             closeLightbox
         );
@@ -838,11 +1003,10 @@ function setupLightbox() {
 
         lightbox.addEventListener(
             "click",
-            function(event) {
+            event => {
 
                 if (
-                    event.target ===
-                    lightbox
+                    event.target === lightbox
                 ) {
 
                     closeLightbox();
@@ -857,7 +1021,7 @@ function setupLightbox() {
 
     document.addEventListener(
         "keydown",
-        function(event) {
+        event => {
 
             if (
                 event.key === "Escape"
@@ -870,150 +1034,176 @@ function setupLightbox() {
         }
     );
 
-}
 
+    /* =====================================================
+       IMAGE LIGHTBOX SUPPORT
+    ===================================================== */
 
-/* =====================================================
-   FLOWER PETALS
-===================================================== */
+    document.addEventListener(
+        "click",
+        event => {
 
-function createPetal() {
+            const image =
+                event.target.closest(
+                    "[data-lightbox]"
+                );
 
-    const petalsContainer =
-        document.getElementById(
-            "petals"
-        );
+            if (!image) {
+                return;
+            }
 
+            if (
+                !lightbox ||
+                !lightboxImage
+            ) {
 
-    if (!petalsContainer) return;
+                return;
 
+            }
 
-    const petal =
-        document.createElement(
-            "div"
-        );
+            lightboxImage.src =
+                image.dataset.lightbox;
 
+            lightbox.classList.add(
+                "active"
+            );
 
-    petal.className =
-        "petal";
-
-
-    petal.textContent =
-        Math.random() > 0.5
-            ? "🌸"
-            : "🌺";
-
-
-    petal.style.left =
-        Math.random() * 100 +
-        "vw";
-
-
-    petal.style.fontSize =
-        10 +
-        Math.random() * 10 +
-        "px";
-
-
-    petal.style.animationDuration =
-        6 +
-        Math.random() * 7 +
-        "s";
-
-
-    petalsContainer.appendChild(
-        petal
+        }
     );
 
 
-    setTimeout(
-        () => {
+    /* =====================================================
+       NAVBAR SCROLL EFFECT
+    ===================================================== */
 
-            petal.remove();
-
-        },
-        14000
-    );
-
-}
-
-
-/* Start flower petals */
-
-setInterval(
-    createPetal,
-    700
-);
-
-
-/* Create initial flowers */
-
-for (
-    let i = 0;
-    i < 8;
-    i++
-) {
-
-    setTimeout(
-        createPetal,
-        i * 300
-    );
-
-}
-
-
-/* =====================================================
-   CURRENT YEAR
-===================================================== */
-
-function setupYear() {
-
-    const year =
-        document.getElementById(
-            "currentYear"
+    const navbar =
+        document.querySelector(
+            ".navbar"
         );
 
-    if (year) {
 
-        year.textContent =
-            new Date().getFullYear();
+    function updateNavbar() {
+
+        if (!navbar) {
+            return;
+        }
+
+        if (
+            window.scrollY > 50
+        ) {
+
+            navbar.style.background =
+                "rgba(7, 3, 10, 0.92)";
+
+            navbar.style.boxShadow =
+                "0 10px 35px rgba(0,0,0,0.25)";
+
+        } else {
+
+            navbar.style.background =
+                "rgba(7, 3, 10, 0.72)";
+
+            navbar.style.boxShadow =
+                "none";
+
+        }
 
     }
 
-}
+
+    window.addEventListener(
+        "scroll",
+        updateNavbar,
+        {
+            passive: true
+        }
+    );
+
+    updateNavbar();
 
 
-/* =====================================================
-   INITIALIZE WEBSITE
-===================================================== */
+    /* =====================================================
+       ACTIVE NAVIGATION
+    ===================================================== */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        setupOfficialInstagram();
-
-        renderMembers();
-
-        renderPhotoGallery();
-
-        renderVideoCategories();
-
-        setupLocation();
-
-        setupContact();
-
-        setupMobileMenu();
-
-        setupShare();
-
-        setupLightbox();
-
-        setupYear();
-
-        console.log(
-            "Railway Colony Ganesh Utsav Samiti website loaded successfully."
+    const sections =
+        document.querySelectorAll(
+            "main section[id]"
         );
 
+    const navLinks =
+        document.querySelectorAll(
+            "#navMenu a"
+        );
+
+
+    if (
+        sections.length &&
+        navLinks.length
+    ) {
+
+        const sectionObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            navLinks.forEach(link => {
+
+                                link.classList.remove(
+                                    "active-nav"
+                                );
+
+                            });
+
+
+                            const activeLink =
+                                document.querySelector(
+                                    `#navMenu a[href="#${entry.target.id}"]`
+                                );
+
+
+                            if (activeLink) {
+
+                                activeLink.classList.add(
+                                    "active-nav"
+                                );
+
+                            }
+
+                        }
+
+                    });
+
+                },
+                {
+                    rootMargin:
+                        "-35% 0px -55% 0px"
+                }
+            );
+
+
+        sections.forEach(section => {
+
+            sectionObserver.observe(
+                section
+            );
+
+        });
+
     }
-);
+
+
+    /* =====================================================
+       CONSOLE MESSAGE
+    ===================================================== */
+
+    console.log(
+        "🙏 Railway Colony Ganesh Utsav Samiti website loaded."
+    );
+
+});
