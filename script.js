@@ -20,7 +20,7 @@ instagramUrl:
         "Railway Colony, Champa, Chhattisgarh",
 
     googleMapsUrl:
-        "",
+         "https://maps.app.goo.gl/iWrGcVQCoZLjcJ8e6",
 
     contactNumber:
         "",
