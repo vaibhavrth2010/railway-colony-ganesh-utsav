@@ -10,11 +10,11 @@ const CONFIG = {
     city:
         "Champa, Chhattisgarh",
 
-    instagramUsername:
-        "@your_samiti",
+   instagramUsername:
+    "@railwaycolony_ganeshutsav_cph",
 
-    instagramUrl:
-        "",
+instagramUrl:
+    "https://www.instagram.com/railwaycolony_ganeshutsav_cph/",
 
     address:
         "Railway Colony, Champa, Chhattisgarh",
